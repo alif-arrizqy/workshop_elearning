@@ -88,6 +88,8 @@ $route['update_penilaian_user'] = 'User/update_penilaian';
 $route['ambil_matkul_user/(:num)'] = 'User/ambil_matkul_mahasiswa_user/$1';
 $route['save_ambil_matkul_user'] = 'User/save_ambil_matkul_user';
 $route['v_asdos_user'] = 'User/v_asdos_user';
+$route['cetak_nilai/(:num)/(:any)'] = 'User/cetak_nilai/$1/$2';
+
 
 	//tabel administrator
 	$route['v_administrator'] = 'Main/v_administrator';

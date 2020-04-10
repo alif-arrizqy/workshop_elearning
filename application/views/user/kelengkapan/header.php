@@ -19,7 +19,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="<?= base_url('dashboard_admin')?>" class="site_title"><center><img src="<?= base_url('assets/')?>images/poloslogo.png" width="60%"></center></a>
+              <a href="<?= base_url('dashboard_user')?>" class="site_title"><center><img src="<?= base_url('assets/')?>images/poloslogo.png" width="60%"></center></a>
             </div>
 
             <div class="clearfix"></div>

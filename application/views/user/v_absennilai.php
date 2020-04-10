@@ -33,7 +33,7 @@
               <li class="dropdown navbar-right">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="menu"><i class="fa fa-wrench"></i></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="#"><span class="fa fa-print"></span>&nbsp;Cetak Data</a></li>
+                  <li><a href="<?= base_url('cetak_nilai/') . $hasil1->id_kelas_matkul . "/" . $hasil1->kode ?>"><span class="fa fa-print"></span>&nbsp;Cetak Data</a></li>
                 </ul>
               </li>
             </ul>
