@@ -678,6 +678,12 @@ class Main_model extends CI_Model{
         }
       }
 
+      // cetak
+      function get_all_cetak_nilai_mhs($id_kelas_matkul,$kode){
+        $query=$this->db->query("SELECT a.*,b.*,c.*,d.*, e.* FROM tbl_kelas_matkul AS a INNER JOIN tbl_nilai_mhs AS b ON a.id_kelas_matkul=b.id_kelas_matkul INNER JOIN tbl_user AS c ON c.id_user=b.id_user INNER JOIN tbl_kelas_mhs AS d ON d.id_user=b.id_user INNER JOIN tbl_matkul AS e ON a.id_matkul=e.id_matkul WHERE a.id_kelas_matkul='$id_kelas_matkul' AND (d.sistem_instrumentasi='$kode' OR d.organisasi_komputer='$kode' OR d.elektronika='$kode' OR d.sistem_digital_1='$kode' OR d.jaringan_komputer='$kode' OR d.sistem_digital_2='$kode' OR d.sistem_mikroprosesor='$kode' OR d.otomasi='$kode' OR d.administrasi_jaringan='$kode' OR d.sistem_pemrograman_mikroprosesor='$kode' OR d.mobile_programing='$kode' OR d.keamanan_jaringan='$kode' OR d.pemrograman_python='$kode' OR d.sistem_interface_mikrokontroler='$kode' OR d.robotik='$kode') ORDER BY c.npm ASC");
+        return $query;
+      }
+
       //User
       function ubah_user($id_user){
         $query=$this->db->query("SELECT a.*, b.* FROM tbl_user AS a INNER JOIN tbl_biodata_user AS b ON a.id_user=b.id_user WHERE a.id_user='$id_user'");

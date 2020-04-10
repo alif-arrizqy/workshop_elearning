@@ -1984,7 +1984,7 @@ class Main extends CI_Controller {
 		}
 
 		//Nilai
-  	function v_penilaian(){
+  		function v_penilaian(){
 			$data = array(
 	      'data_nilai' => $this->main_model->get_all_matkul()->result(),
 	    );
@@ -2000,11 +2000,12 @@ class Main extends CI_Controller {
 			$this->load->view('admin/kelengkapan/header');
 			$this->load->view('admin/proses_data/nilai/v_nilai_kelas', $data);
 			$this->load->view('admin/kelengkapan/footer');	
-  	}
+  		}
 
-  	function nilai_kelas($id_kelas_matkul,$kode){
+  		function nilai_kelas($id_kelas_matkul,$kode){
 			$data = array(
-	      'data_nilai' => $this->main_model->get_all_nilai_mhs($id_kelas_matkul,$kode),
+			// 'data_cetak_nilai' => $this->main_model->get_all_cetak_nilai_mhs($id_kelas_matkul,$kode),		
+	      	'data_nilai' => $this->main_model->get_all_nilai_mhs($id_kelas_matkul,$kode),
 	    );
 			$this->load->view('admin/kelengkapan/header');
 			$this->load->view('admin/proses_data/nilai/v_nilai', $data);
@@ -2047,5 +2048,13 @@ class Main extends CI_Controller {
  				$this->session->set_flashdata('gagal', 'Data gagal disimpan !!! Terimakasih ..');
     		redirect('nilai_kelas/'.$kelas_matkul_id."/".$kode);
  			}
+		}
+		
+		//cetak
+		function cetak_nilai($id_kelas_matkul,$kode){
+			$data = array(
+				'data_cetak_nilai' => $this->main_model->get_all_cetak_nilai_mhs($id_kelas_matkul,$kode),
+	    );
+			$this->load->view('admin/proses_data/nilai/cetak_nilai', $data);			
 		}
 }

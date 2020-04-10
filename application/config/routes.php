@@ -171,6 +171,7 @@ $route['v_asdos_user'] = 'User/v_asdos_user';
 	$route['nilai_kelas/(:num)/(:any)'] = 'Main/nilai_kelas/$1/$2';
 	$route['edit_nilai/(:num)/(:num)'] = 'Main/edit_nilai/$1/$2';
 	$route['update_penilaian'] = 'Main/update_penilaian';
+	$route['cetak_nilai/(:num)/(:any)'] = 'Main/cetak_nilai/$1/$2';
 
 $route['default_controller'] = 'LoginDashboard/loginelearningUser';
 $route['404_override'] = '';
