@@ -59,7 +59,7 @@ $route['auth_admin_elearning'] = 'LoginDashboard/auth_admin_elearning';
 $route['logout_admin_elearning'] = 'LoginDashboard/logout_admin_elearning';
 
 //Dashboard Admin
-$route['dashboard_admin'] = 'Main';
+$route['workshopadministrator'] = 'Main';
 $route['profile_admin'] = 'Main/profile_admin';
 $route['tampildata_admin/(:num)/(:num)'] = 'Main/tampildata_admin/$1/$2';
 $route['ubah_profil/(:num)'] = 'Main/ubah_profil/$1';

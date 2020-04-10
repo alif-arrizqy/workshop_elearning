@@ -193,7 +193,7 @@ class Main extends CI_Controller {
 		//Administrator
 		function v_administrator(){
 			$data = array(
-	      'data_admin' => $this->main_model->get_all_admin()->result(),
+	      	'data_admin' => $this->main_model->get_all_admin()->result(),
 	    );
 			$this->load->view('admin/kelengkapan/header');
 			$this->load->view('admin/master_data/administrator/v_administrator', $data);

@@ -19,7 +19,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="<?= base_url('dashboard_admin')?>" class="site_title"><center><img src="<?= base_url('assets/')?>images/poloslogo.png" width="60%"></center></a>
+              <a href="<?= base_url('workshopadministrator')?>" class="site_title"><center><img src="<?= base_url('assets/')?>images/poloslogo.png" width="60%"></center></a>
             </div>
 
             <div class="clearfix"></div>
@@ -30,7 +30,7 @@
                 <br>
                 <h3>MENU UTAMA</h3>
                 <ul class="nav side-menu">
-                  <li><a href="<?= base_url('dashboard_admin')?>"><i class="fa fa-home"></i> Dashboard</a></li>
+                  <li><a href="<?= base_url('workshopadministrator')?>"><i class="fa fa-home"></i> Dashboard</a></li>
                   <li><a><i class="fa fa-edit"></i> Master Data <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <?php if($level == 1){ ?>

@@ -19,7 +19,7 @@ class LoginDashboard extends CI_Controller {
         if($this->session->userdata('masuk') != TRUE){
 			$this->load->view('admin/login_dashboard_elearning');
 		}else{
-			redirect('dashboard_admin');
+			redirect('workshopadministrator');
 		}
 	}
 
@@ -73,7 +73,7 @@ class LoginDashboard extends CI_Controller {
 				}
 		        $level = $this->session->userdata('ses_level'); if($level == 1){$sbg = "Super Admin";}else if($level == 2){$sbg = "Operator";}else if($level == 3){$sbg = "Tamu";}
 		        $this->session->set_flashdata('msg', 'Selamat Datang '.$nama.' di Panel Elearning Workshop sebagai '.$sbg.' !!!');
-		        redirect('dashboard_admin');
+		        redirect('workshopadministrator');
 		    }else{
 		    	$this->session->set_flashdata('msg', 'Tidak bisa masuk panel dasboard, mungkin ada kesalahan saat menginput data !!!');
 		        redirect('loginelearning');

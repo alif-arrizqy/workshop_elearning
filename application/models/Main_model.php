@@ -112,7 +112,9 @@ class Main_model extends CI_Model{
     //Master Data
     	//Administrator
     	function get_all_admin(){
-        return $this->db->get('vw_admin');
+        // return $this->db->get('vw_admin');
+        $query=$this->db->query("SELECT a.*, b.* FROM tbl_admin AS a INNER JOIN tbl_biodata_admin AS b ON a.id_admin=b.id_admin WHERE a.id_admin ORDER BY a.id_admin ASC");
+        return $query;
       }
 
       function insert_administrator($kirimdata){
