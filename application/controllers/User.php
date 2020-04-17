@@ -19,7 +19,7 @@ class User extends CI_Controller {
 		$data = array(
 			'data_user' => $this->main_model->detail_user($id_user)->result(),
 			'data_kelas_mhs' => $this->main_model->get_kelas_mhs($id_user)->result(),
-  	  'data_kelas_matkul' => $this->main_model->get_kelas_matkulBy($id_user),
+  	  		'data_kelas_matkul' => $this->main_model->get_kelas_matkulBy($id_user),
 	  );
 		$this->load->view('user/kelengkapan/header');
 		$this->load->view('user/profile', $data);
@@ -106,7 +106,7 @@ class User extends CI_Controller {
     		$agama = $this->input->post('agama');
     		$inputTelepon = $this->input->post('inputTelepon');
     		$inputNamaayah = $this->input->post('inputNamaayah');
-      	$inputNamaibu = $this->input->post('inputNamaibu');
+     	 	$inputNamaibu = $this->input->post('inputNamaibu');
     		$inputAlamat = $this->input->post('inputAlamat');
 		
     		if($inputTgl == "1970-01-01"){
@@ -120,17 +120,17 @@ class User extends CI_Controller {
 				$kirimdata2['jk'] = $jk;
 				$kirimdata2['agama'] = $agama;
 				$kirimdata2['email'] = $inputEmail;
-				$kirimdata2['telp'] = $npmlepon;
+				$kirimdata2['telp'] = $inputTelepon;
 				$kirimdata2['nama_ayah'] = $inputNamaayah;
 				$kirimdata2['nama_ibu'] = $inputNamaibu;
 				$kirimdata2['alamat'] = $inputAlamat;
 				$success = $this->main_model->update_Luser($kirimdata2, $user_id);
-    		$this->session->set_userdata('masuk',TRUE);
-        $this->session->set_userdata('ses_idlogin',$user_id);
-		    $this->session->set_userdata('ses_name',$inputNama);
-        $this->session->set_userdata('ses_username',$inputUsername);
-        $this->session->set_userdata('ses_email',$inputEmail);
-        $this->session->set_userdata('ses_foto',$gambar);
+				$this->session->set_userdata('masuk',TRUE);
+				$this->session->set_userdata('ses_idlogin',$user_id);
+				$this->session->set_userdata('ses_name',$inputNama);
+				$this->session->set_userdata('ses_username',$inputUsername);
+				$this->session->set_userdata('ses_email',$inputEmail);
+				$this->session->set_userdata('ses_foto',$gambar);
 				
 	 			if($success){
 	 				$this->session->set_flashdata('sukses', 'Data berhasil diubah !!! Terimakasih ..');
@@ -175,7 +175,7 @@ class User extends CI_Controller {
     		$agama = $this->input->post('agama');
     		$inputTelepon = $this->input->post('inputTelepon');
     		$inputNamaayah = $this->input->post('inputNamaayah');
-      	$inputNamaibu = $this->input->post('inputNamaibu');
+      		$inputNamaibu = $this->input->post('inputNamaibu');
     		$inputAlamat = $this->input->post('inputAlamat');
 		
     		if($inputTgl == "1970-01-01"){
@@ -194,9 +194,9 @@ class User extends CI_Controller {
 				$kirimdata2['nama_ibu'] = $inputNamaibu;
 				$kirimdata2['alamat'] = $inputAlamat;
 				$success = $this->main_model->update_Luser($kirimdata2, $user_id);
-    		$this->session->set_userdata('masuk',TRUE);
-        $this->session->set_userdata('ses_idlogin',$user_id);
-		    $this->session->set_userdata('ses_name',$inputNama);
+    			$this->session->set_userdata('masuk',TRUE);
+        		$this->session->set_userdata('ses_idlogin',$user_id);
+		    	$this->session->set_userdata('ses_name',$inputNama);
         $this->session->set_userdata('ses_username',$inputUsername);
         $this->session->set_userdata('ses_email',$inputEmail);
         $this->session->set_userdata('ses_foto',$gambar);
@@ -214,8 +214,9 @@ class User extends CI_Controller {
 
 	function lihat_nilai_matkul($id_kelas_matkul,$id_user){
 		$data = array(
-  	  'data_absensi' => $this->main_model->get_all_absen_mhsBY($id_kelas_matkul,$id_user)->result_array(),
-  	  'data_nilai' => $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul,$id_user)->result_array(),
+			'data_absensi' => $this->main_model->get_all_absen_mhsBY($id_kelas_matkul,$id_user)->result_array(),
+			'data_nilai' => $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul,$id_user)->result_array(),
+			
     );
 		$this->load->view('user/kelengkapan/header');
 		$this->load->view('user/lihatnilai', $data);
@@ -483,6 +484,15 @@ class User extends CI_Controller {
 		$data = array(
       'data_asdos' => $this->main_model->get_all_asdos()->result(),
     );
+		$this->load->view('user/kelengkapan/header');
+		$this->load->view('user/v_asdos', $data);
+		$this->load->view('user/kelengkapan/footer');
+	}
+
+	function v_teman($id_kelas_matkul,$kode){
+		$data = array(
+			'data_mhs' => $this->main_model->get_all_nilai_mhs($id_kelas_matkul,$kode),
+	);
 		$this->load->view('user/kelengkapan/header');
 		$this->load->view('user/v_asdos', $data);
 		$this->load->view('user/kelengkapan/footer');

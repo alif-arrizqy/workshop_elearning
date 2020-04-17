@@ -187,7 +187,8 @@ class LoginDashboard extends CI_Controller {
 				}
 		        $level = $this->session->userdata('ses_level'); if($level == 1){$sbg = "Mahasiswa";}else if($level == 2){$sbg = "Asisten Praktikum";}else if($level == 3){$sbg = "Asisten Praktikum / Mahasiswa";}else if($level == 4){$sbg = "Alumin / Umum";}
 		        $this->session->set_flashdata('msg', 'Selamat Datang '.$data['nama'].' di Panel Elearning Workshop sebagai '.$sbg.' !!!');
-		        redirect('dashboard_user');
+				redirect('dashboard_user'); 
+				redirect('LoginApi');
 		    }else{
 		    	$this->session->set_flashdata('msg', 'Tidak bisa masuk panel dasboard, mungkin ada kesalahan saat menginput data !!!');
 		        redirect('loginelearningUser');

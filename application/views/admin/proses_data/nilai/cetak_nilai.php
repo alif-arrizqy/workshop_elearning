@@ -46,7 +46,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title><?= $hasil1->kelas; ?></title>
+        <title>Nilai - <?= $hasil1->kelas; ?></title>
         <link rel="icon" href="<?= base_url('assets/') ?>images/Logowrk.png" type="image/png">
     </head>
 

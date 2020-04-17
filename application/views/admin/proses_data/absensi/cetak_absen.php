@@ -1,43 +1,18 @@
 <?php $thn_sekarang = date('Y') ?>
-<?php if ($data_cetak_nilai->num_rows() > 0) { ?>
+<?php if ($data_cetak_absensi->num_rows() > 0) { ?>
     <?php
-    foreach ($data_cetak_nilai->result() as $hasil1) {
+    foreach ($data_cetak_absensi->result() as $hasil1) {
         $matkul_id = $hasil1->id_matkul;
-        if ($matkul_id == 1) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 2) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 3) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 4) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 5) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 6) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 7) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 8) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 9) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 10) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 11) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 12) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 13) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 14) {
-            $tugaspembagi = '5';
-        } elseif ($matkul_id == 15) {
-            $tugaspembagi = '5';
-        }
-    }
-    ?>
+    } ?>
+
     <!DOCTYPE html>
     <html lang="en">
+    <!-- print auto landscape position -->
+    <style type="text/css" media="print">
+        @page {
+            size: landscape;
+        }
+    </style>
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -45,8 +20,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title><?= $hasil1->kelas; ?></title>
+        <title>Absen - <?= $hasil1->kelas; ?></title>
         <link rel="icon" href="<?= base_url('assets/') ?>images/Logowrk.png" type="image/png">
     </head>
 
@@ -114,62 +88,108 @@
         <table cellpadding="0" cellspacing="0" width="100%" border="1" id="example" class="table table-striped jambo_table dataTable">
             <thead>
                 <tr>
-                    <td align="center" style="vertical-align: middle; font-weight: bold;">No</td>
-                    <td align="center" style="vertical-align: middle; font-weight: bold;">Npm</td>
-                    <td align="center" style="vertical-align: middle; font-weight: bold;">Nama</td>
-                    <td align="center" style="vertical-align: middle; font-weight: bold;">Total Nilai</td>
-                    <td align="center" style="vertical-align: middle; font-weight: bold;">Huruf Nilai</td>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">NPM</th>
+                    <th rowspan="2">Nama</th>
+                    <th colspan="10">Absensi</th>
+                </tr>
+                <tr align="center" style="font-weight: bold;">
+                    <td>A 1</td>
+                    <td>A 2</td>
+                    <td>A 3</td>
+                    <td>A 4</td>
+                    <td>A 5</td>
+                    <td>A 6</td>
+                    <td>A 7</td>
+                    <td>A 8</td>
+                    <td>A 9</td>
+                    <td>A 10</td>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
-                $absen = $data_presentase_nilai[0]['absen'] * 100;
-                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
-                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
-                $uap = $data_presentase_nilai[0]['uap'] * 100;
-                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
-                ?>
-
-                <?php
                 $no = 1;
-                foreach ($data_cetak_nilai->result() as $hasil) {
-                    $data_absensi = $this->main_model->get_all_absen_mhsBY($hasil->id_kelas_matkul, $hasil->id_user)->result();
-                    foreach ($data_absensi as $hasilabsen) {
-                        $totalabsen = $hasilabsen->a_1 + $hasilabsen->a_2 + $hasilabsen->a_3 + $hasilabsen->a_4 + $hasilabsen->a_5 + $hasilabsen->a_6 + $hasilabsen->a_7 + $hasilabsen->a_8 + $hasilabsen->a_9 + $hasilabsen->a_10;
-                    }
-                    $hasiltugas = $hasil->tugas1 + $hasil->tugas2 + $hasil->tugas3 + $hasil->tugas4 + $hasil->tugas5;
-                    $totaltugas = $hasiltugas / $tugaspembagi;
-                    $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
-                    $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
-                    $total_kuis = $hasil->kuis * $data_presentase_nilai[0]['kuis'];
-                    $total_uap = $hasil->uap * $data_presentase_nilai[0]['uap'];
-                    $total_tugas_akhir = $hasil->tugasakhir * $data_presentase_nilai[0]['tugasakhir'];
-                    $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+                foreach ($data_cetak_absensi->result() as $hasil) {
                 ?>
                     <tr>
                         <td width="1%" align="center"><?= $no++; ?></td>
                         <td width="2%" align="center"><?= $hasil->npm; ?></td>
-                        <td width="5%"><?= $hasil->nama ?></td>
-                        <td width="2%" align="center"><?= round($total_seluruh) ?></td>
-                        <td width="2%" align="center">
-                            <?php if ($total_seluruh >= 85) {
+                        <td width="8%" align=""><?= $hasil->nama; ?></td>
+                        <td width="3%" align="center">
+                            <?php if ($hasil->a_1 == 0) {
                                 echo "A";
-                            } elseif ($total_seluruh >= 75) {
-                                echo "B";
-                            } elseif ($total_seluruh >= 60) {
-                                echo "C";
-                            } elseif ($total_seluruh >= 50) {
-                                echo "D";
                             } else {
-                                echo "E";
+                                echo "H";
+                            } ?></td>
+                        <td width="3%" align="center">
+                            <?php if ($hasil->a_2 == 0) {
+                                echo "A";
+                            } else {
+                                echo "H";
+                            } ?>
+                        </td>
+                        <td width="3%" align="center">
+                            <?php if ($hasil->a_3 == 0) {
+                                echo "A";
+                            } else {
+                                echo "H";
+                            } ?>
+                        </td>
+                        <td width="3%" align="center">
+                            <?php if ($hasil->a_4 == 0) {
+                                echo "A";
+                            } else {
+                                echo "H";
+                            } ?>
+                        </td>
+                        <td width="3%" align="center">
+                            <?php if ($hasil->a_5 == 0) {
+                                echo "A";
+                            } else {
+                                echo "H";
+                            } ?>
+                        </td>
+                        <td width="3%" align="center">
+                            <?php if ($hasil->a_6 == 0) {
+                                echo "A";
+                            } else {
+                                echo "H";
+                            } ?>
+                        </td>
+                        <td width="3%" align="center">
+                            <?php if ($hasil->a_7 == 0) {
+                                echo "A";
+                            } else {
+                                echo "H";
+                            } ?>
+                        </td>
+                        <td width="3%" align="center">
+                            <?php if ($hasil->a_8 == 0) {
+                                echo "A";
+                            } else {
+                                echo "H";
+                            } ?>
+                        </td>
+                        <td width="3%" align="center">
+                            <?php if ($hasil->a_9 == 0) {
+                                echo "A";
+                            } else {
+                                echo "H";
+                            } ?>
+                        </td>
+                        <td width="3%" align="center">
+                            <?php if ($hasil->a_10 == 0) {
+                                echo "A";
+                            } else {
+                                echo "H";
                             } ?>
                         </td>
                     </tr>
                 <?php } ?>
             </tbody>
-
         </table>
+        <b>Keterangan: A = Alpa, H = Hadir
+        </b>
         <br>
         <table width="40%" align="right">
             <tr>
@@ -199,10 +219,7 @@
                 <td colspan="20" align="center" style="font-size: 16px; font-weight: bold;">Kepala Laboratorium Workshop</td>
             </tr>
         </table>
-    <?php
-}
-
-    ?>
+    <?php } ?>
     </body>
 
     </html>

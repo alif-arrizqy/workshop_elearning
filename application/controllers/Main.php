@@ -2003,8 +2003,7 @@ class Main extends CI_Controller {
   		}
 
   		function nilai_kelas($id_kelas_matkul,$kode){
-			$data = array(
-			// 'data_cetak_nilai' => $this->main_model->get_all_cetak_nilai_mhs($id_kelas_matkul,$kode),		
+			$data = array(		
 	      	'data_nilai' => $this->main_model->get_all_nilai_mhs($id_kelas_matkul,$kode),
 	    );
 			$this->load->view('admin/kelengkapan/header');
@@ -2056,5 +2055,12 @@ class Main extends CI_Controller {
 				'data_cetak_nilai' => $this->main_model->get_all_cetak_nilai_mhs($id_kelas_matkul,$kode),
 	    );
 			$this->load->view('admin/proses_data/nilai/cetak_nilai', $data);			
+		}
+
+		function cetak_absen($id_kelas_matkul,$kode){
+			$data = array(
+	      'data_cetak_absensi' => $this->main_model->get_all_cetak_absen_mhs($id_kelas_matkul,$kode),
+	    );
+			$this->load->view('admin/proses_data/absensi/cetak_absen', $data);
 		}
 }

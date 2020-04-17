@@ -88,7 +88,6 @@ $route['update_penilaian_user'] = 'User/update_penilaian';
 $route['ambil_matkul_user/(:num)'] = 'User/ambil_matkul_mahasiswa_user/$1';
 $route['save_ambil_matkul_user'] = 'User/save_ambil_matkul_user';
 $route['v_asdos_user'] = 'User/v_asdos_user';
-$route['cetak_nilai/(:num)/(:any)'] = 'User/cetak_nilai/$1/$2';
 
 
 	//tabel administrator
@@ -167,7 +166,9 @@ $route['cetak_nilai/(:num)/(:any)'] = 'User/cetak_nilai/$1/$2';
 	$route['absen_kelas/(:num)/(:any)'] = 'Main/absen_kelas/$1/$2';
 	$route['edit_absen/(:num)/(:num)'] = 'Main/edit_absen/$1/$2';
 	$route['update_absensi'] = 'Main/update_absensi';
-	//tabel proses absen
+	$route['cetak_absen/(:num)/(:any)'] = 'Main/cetak_absen/$1/$2';
+
+	//tabel proses penilaian
 	$route['v_penilaian'] = 'Main/v_penilaian';
 	$route['nilai_kelas_matkul/(:num)'] = 'Main/nilai_kelas_matkul/$1';
 	$route['nilai_kelas/(:num)/(:any)'] = 'Main/nilai_kelas/$1/$2';
@@ -175,6 +176,10 @@ $route['cetak_nilai/(:num)/(:any)'] = 'User/cetak_nilai/$1/$2';
 	$route['update_penilaian'] = 'Main/update_penilaian';
 	$route['cetak_nilai/(:num)/(:any)'] = 'Main/cetak_nilai/$1/$2';
 
+//API JSON
+$route['LoginApi'] = 'Json/json_login';
+
 $route['default_controller'] = 'LoginDashboard/loginelearningUser';
+// $route['default_controller'] = 'Json/json_login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
