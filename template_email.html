@@ -1,5 +1,3 @@
-<?php date_default_timezone_set("Asia/Jakarta");
-$tahun = date("Y"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,28 +12,27 @@ $tahun = date("Y"); ?>
 
 <body>
     <div>
-        <!-- <img src="assets/images/Logowrk.png" width="200px" height="80px"> -->
+        <img src="assets/images/Logowrk.png" width="200px" height="80px">
         <!-- <img src="poloslogo.png" width="20%"> -->
-        <br /><br />
+        <br/><br/>
         <p>
-            Hallo <?= $this->session->userdata('ses_name'); ?>,
-            <br /><br />
+            Hello Nama,
+            <br/><br/>
             Jika kamu menerima email ini, maka kamu telah meminta untuk mereset Password akun <b>Workshop Elearning.</b>
-            <br />
-            Akun Anda memiliki Username: <b><?= $this->session->userdata('ses_username'); ?></b>
-            <br /><br />
+            <br/>
+            Akun Anda memiliki Username: <b>@username</b>
+            <br /><br/>
             Silahkan ikuti tautan pada link dibawah untuk mereset Password Anda:
-            <br />
-            <a href="workshopelearning.com/ubah_pass" target="_blank">Reset Password</a>
+            <br/>
+            <a href="localhost/workshopelearning/ubah_pass" target="_blank">Reset Password</a>
             <p>
                 Hormat Kami,
-                <br />
+                <br/>
                 Admin Workshop Elearning.
             </p>
         </p>
         <hr>
-        <p>
-            &copy; <?= $tahun ?> All Rights Reserved. Workshop Elearning.
+        <p>©<?= $tahun?> All Rights Reserved. Workshop Elearning.
         </p>
     </div>
 </body>
