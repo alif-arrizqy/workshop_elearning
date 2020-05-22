@@ -36,6 +36,13 @@
               $kondisi_data = $hasil->kondisi_data;
             endforeach; 
           ?>
+          <?php if(empty($email)){
+            $this->session->set_flashdata('msg', 'Jangan Lupa Untuk Menambahkan Email Yang Aktif Anda Gunakan Sekarang !!');  
+          } else if (!empty($email)){
+            $this->session->set_flashdata('msg', 'Pastikan Email Yang Anda Gunakan Aktif');  
+          }
+          ?>
+
           <div class="col-md-3 col-sm-3 col-xs-12">
             <div align="center">
               <?php if(!empty($gambar)){ ?>

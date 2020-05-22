@@ -217,10 +217,16 @@ class LoginDashboard extends CI_Controller
 					$sbg = "Asisten Praktikum / Mahasiswa";
 				} else if ($level == 4) {
 					$sbg = "Alumin / Umum";
-				}
-				$this->session->set_flashdata('msg', 'Selamat Datang ' . $data['nama'] . ' di Panel Elearning Workshop sebagai ' . $sbg . ' !!!');
-				redirect('dashboard_user');
-				redirect('LoginApi');
+				}				
+				if (empty($email)){
+					$this->session->set_flashdata('msg', 'Jangan Lupa Untuk Menambahkan Email Yang Aktif Anda Gunakan Sekarang !!');  
+					redirect('dashboard_user');
+					redirect('LoginApi');
+				  } else {
+					$this->session->set_flashdata('msg', 'Selamat Datang ' . $data['nama'] . ' di Panel Elearning Workshop sebagai ' . $sbg . ' !!!');
+					redirect('dashboard_user');
+					redirect('LoginApi');
+				  }
 			} else {
 				$this->session->set_flashdata('msg', 'Tidak bisa masuk panel dasboard, mungkin ada kesalahan saat menginput data !!!');
 				redirect('loginelearningUser');
@@ -262,9 +268,16 @@ class LoginDashboard extends CI_Controller
 			$this->session->set_userdata('ses_name', $nama);
 			$this->session->set_userdata('ses_username', $username);
 			$config = array(
-				'protocol' => 'smtp',
-				'smtp_host' => 'ssl://smtp.googlemail.com',
-				'smtp_port' => 465,
+				// aktifkan jika mencoba di hosting
+				'protocol' => '',
+				'smtp_host' => '',
+				'smtp_port' => '',
+				// ======================
+
+				//aktifkan jika mencoba di localhost
+				// 'protocol' => 'smtp',
+				// 'smtp_host' => 'ssl://smtp.googlemail.com',
+				// 'smtp_port' => 465,
 				'smtp_user' => 'wrkelearning@gmail.com',  //wrkelearning@gmail.com
 				'smtp_pass' => 'adminworkshopelearning2019', //adminworkshopelearning2019
 				'mailtype' => 'html',
@@ -285,7 +298,10 @@ class LoginDashboard extends CI_Controller
 				$this->session->set_flashdata('sukses', 'Permintaan Reset Password Telah Dikirim Ke Email, Silahkan Periksa Email Anda.');
 				redirect('loginelearningUser');
 			}
-		}
+		} else {
+			$this->session->set_flashdata('msg', 'Email Tidak Terdaftar !!');
+			redirect('lupapassUser');
+		} 
 	}
 
 	function ubah_pass(){

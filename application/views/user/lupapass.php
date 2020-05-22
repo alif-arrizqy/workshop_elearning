@@ -18,6 +18,7 @@
     <link href="<?= base_url('assets/')?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="<?= base_url('assets/')?>vendors/animate.css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('assets/')?>dist/sweetalert2.min.css">
 
     <!-- Custom Theme Style -->
     <link href="<?= base_url('assets/')?>build/css/custom.min.css" rel="stylesheet">
@@ -33,10 +34,14 @@
           <section class="login_content">
             <form action="<?= base_url('email_reset_pass');?>" method="post" name="form" enctype="multipart/form-data" >
               <h1>Ubah Kata Sandi</h1>
-              <div class="flash-data" data-flashdata="<?= $this->session->flashdata('sukses');?>"></div>
+              <div class="flash-data" data-flashdata="<?= $this->session->flashdata('msg');?>"></div>
               <div>
                 <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" required="" />
               </div>
+              <div style="text-align: left;">
+                <b><p>*Email Harus Terdaftar Pada Website Workshop Elearning!</p></b>
+              </div>
+              
               <div style="margin-left: 80px;">
                 <input type="submit" name="submit" id="submit" value="Ubah Kata Sandi" class="btn btn-default submit">
               </div>
@@ -62,6 +67,8 @@
     </div>
   </body>
   <script src="<?= base_url('assets/')?>jquery.min.js"></script>
+  <script src="<?= base_url('assets/')?>dist/sweetalert2.min.js"></script>
+  <script src="<?= base_url('assets/')?>alert.js"></script>
   <script type="text/javascript">
     function myFunction() {
         var x = document.getElementById("password");
@@ -70,6 +77,16 @@
         } else {
             x.type = "password";
         }
+    }
+
+    const flashData2 = $('.flash-data').data('flashdata');
+    // console.log(flashData);
+    if(flashData2){
+      Swal.fire({
+        title : 'Pemberitahuan',
+        text : flashData2,
+        type : 'error'
+      });
     }
   </script>
 </html>
