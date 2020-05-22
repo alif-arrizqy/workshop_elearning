@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['login'] = 'LoginDashboard';
 $route['loginelearning'] = 'LoginDashboard/loginelearning';
 $route['logininventaris'] = 'LoginDashboard/logininventaris';
-$route['lupapass'] = 'LoginDashboard/lupapass';
+$route['lupapass_admin'] = 'LoginDashboard/lupapass';
 $route['auth_admin_elearning'] = 'LoginDashboard/auth_admin_elearning';
 $route['logout_admin_elearning'] = 'LoginDashboard/logout_admin_elearning';
 
@@ -70,6 +70,9 @@ $route['hapusgambar/(:num)'] = 'Main/hapusgambar/$1';
 $route['loginelearningUser'] = 'LoginDashboard/loginelearningUser';
 $route['save_user_akun'] = 'LoginDashboard/save_user_akun';
 $route['lupapassUser'] = 'LoginDashboard/lupapassUser';
+$route['email_reset_pass'] = 'LoginDashboard/email_reset_pass';
+$route['ubah_pass'] = 'LoginDashboard/ubah_pass';
+$route['update_pass'] = 'LoginDashboard/update_pass';
 $route['auth_user_elearning'] = 'LoginDashboard/auth_user_elearning';
 $route['logout_user_elearning'] = 'LoginDashboard/logout_user_elearning';
 

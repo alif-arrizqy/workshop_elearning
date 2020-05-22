@@ -60,7 +60,7 @@
                 <!-- <input type="checkbox" id="show" name="show" onclick="myFunction()"> Tampilkan kata sandi -->
                 <!-- <br> -->
                 Tidak punya akun ?<a href="#signup" class="to_register"> <b>Silahkan daftar akun ..</b></a><br>
-                <a href="<?= base_url('lupapass')?>"><b>Lupa Kata Sandi ?</b></a>
+                <a href="<?= base_url('lupapassUser')?>"><b>Lupa Kata Sandi ?</b></a>
               </div>
               <div style="margin-left: 80px;">
                 <input type="submit" name="submit" id="submit" value="Masuk Panel" class="btn btn-default submit">

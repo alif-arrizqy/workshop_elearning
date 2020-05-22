@@ -31,8 +31,9 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form action="<?= base_url('email_reset_pass');?>" method="post" name="form" enctype="multipart/form-data" >
               <h1>Ubah Kata Sandi</h1>
+              <div class="flash-data" data-flashdata="<?= $this->session->flashdata('sukses');?>"></div>
               <div>
                 <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" required="" />
               </div>
@@ -43,8 +44,8 @@
               <div class="clearfix"></div>
 
               <div class="separator">
-                <a href="<?= base_url('loginelearning')?>"><< kembali ke panel login</a><br><br>
-                Disaran kan menggunakan browser Google Chrome, Mozila Firefox atau Internet Explorer untuk perfoma yang stabil
+                <a href="<?= base_url('loginelearningUser')?>"><< kembali ke panel login</a><br><br>
+                Disarankan menggunakan browser Google Chrome, Mozila Firefox atau Internet Explorer untuk performa yang stabil
                 <div class="clearfix"></div>
                 <br />
 

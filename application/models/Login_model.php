@@ -48,5 +48,15 @@ class Login_model extends CI_Model{
     function hapus_session($username){
         $this->db->where('username', $username);
         $this->db->delete('tbl_session');
-    }
+	}
+	
+	function cek_email($email){
+		$query=$this->db->query("SELECT * FROM tbl_biodata_user WHERE email = '$email'");
+		return $query;
+	}
+
+	function get_name_user($id_user){
+		$query=$this->db->query("SELECT * FROM tbl_user WHERE id_user = '$id_user'");
+		return $query->result();
+	}
 }
