@@ -6,12 +6,12 @@ class User extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('main_model');
-    $this->load->library('upload');
-    if($this->session->userdata('masuk') != TRUE){
-			$url=base_url();
-			$this->session->set_flashdata('msg', 'Anda tidak boleh masuk Dashboard, silahkan login terlebih dahulu !!');
-			redirect('loginelearningUser');
-		}
+   	 	$this->load->library('upload');
+    		if($this->session->userdata('masuk') != TRUE) {
+				$url=base_url();
+				$this->session->set_flashdata('msg', 'Anda tidak boleh masuk Dashboard, silahkan login terlebih dahulu !!');
+				redirect('loginelearningUser');
+			}
 	}
 
 	function index(){
@@ -183,7 +183,6 @@ class User extends CI_Controller {
     		}else{
     			$tanggal = $inputTgl;
     		}
-
 				$kirimdata2['tempat'] = $inputTempat;
 				$kirimdata2['tgl_lahir'] = $tanggal;
 				$kirimdata2['jk'] = $jk;
@@ -197,9 +196,9 @@ class User extends CI_Controller {
     			$this->session->set_userdata('masuk',TRUE);
         		$this->session->set_userdata('ses_idlogin',$user_id);
 		    	$this->session->set_userdata('ses_name',$inputNama);
-        $this->session->set_userdata('ses_username',$inputUsername);
-        $this->session->set_userdata('ses_email',$inputEmail);
-        $this->session->set_userdata('ses_foto',$gambar);
+				$this->session->set_userdata('ses_username',$inputUsername);
+				$this->session->set_userdata('ses_email',$inputEmail);
+				$this->session->set_userdata('ses_foto',$gambar);
 				
 	 			if($success){
 	 				$this->session->set_flashdata('sukses', 'Data berhasil diubah !!! Terimakasih ..');

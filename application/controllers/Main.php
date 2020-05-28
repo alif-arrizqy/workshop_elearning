@@ -1910,7 +1910,7 @@ class Main extends CI_Controller {
       	$this->main_model->hapus_session_akun($ip_address[$x]);
       }
       $this->session->set_flashdata('sukses', 'Data yang di pilih berhasil dihapus !!! Terimakasih ..');
-  	  redirect('v_qrcode');
+  	  redirect('v_session_akun');
   	}
 
   	//Absensi

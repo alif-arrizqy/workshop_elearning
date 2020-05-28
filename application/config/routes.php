@@ -180,7 +180,10 @@ $route['v_asdos_user'] = 'User/v_asdos_user';
 	$route['cetak_nilai/(:num)/(:any)'] = 'Main/cetak_nilai/$1/$2';
 
 //API JSON
-$route['LoginApi'] = 'Json/json_login';
+$route['UserApi'] = 'api/JsonUser/index_get';
+$route['LoginApi'] = 'api/JsonLogin/index_get';
+$route['JadwalPribadiApi'] = 'api/JsonJadwalPribadi/index_get';
+$route['JadwalNgajarApi'] = 'api/JsonJadwalNgajar/index_get';
 
 $route['default_controller'] = 'LoginDashboard/loginelearningUser';
 // $route['default_controller'] = 'Json/json_login';
