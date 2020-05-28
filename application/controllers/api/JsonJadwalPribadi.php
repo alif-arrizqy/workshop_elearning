@@ -20,8 +20,8 @@ class JsonJadwalPribadi extends REST_Controller
 
     function index_get()
     {
-        // $id_user = $this->session->userdata('ses_idlogin');
-        $id_user = $this->get('id_user');
+        $id_user = $this->session->userdata('ses_idlogin');
+        // $id_user = $this->get('id_user');
         $data_kelas_mhs = $this->main_model->get_kelas_mhs($id_user)->result();
 
         if ($id_user === NULL) {
