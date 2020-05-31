@@ -1,3 +1,4 @@
+<?php error_reporting(0)?>
 <?php
 use Restserver\Libraries\REST_Controller;
 
@@ -44,9 +45,7 @@ class JsonLogin extends REST_Controller
 
         if ($data = $cekauth->row_array()){
             $hasil = array(
-                $user = $this->main_model->detail_user($data['id_user'])->result(),
-                $kelas = $this->main_model->get_kelas_mhs($data['id_user'])->result(),
-                $kelasmatkul = $this->main_model->get_kelas_matkulBy($data['id_user']),
+                $user = $this->main_model->get_detail_user($data['id_user'])->result(),
             );
             // hide output null
             $hasil = (object) array_filter((array) $hasil);

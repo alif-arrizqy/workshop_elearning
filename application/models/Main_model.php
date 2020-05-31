@@ -741,4 +741,27 @@ class Main_model extends CI_Model{
             return false;
         }
       }
+
+      //JSON
+      function get_detail_user($id_user){
+        $query=$this->db->query("SELECT a.id_user, a.npm, a.nama, a.username, a.password, a.gambar, b.tempat, b.tgl_lahir, b.agama, b.email, b.telp, b.alamat FROM tbl_user AS a INNER JOIN tbl_biodata_user AS b ON a.id_user=b.id_user WHERE a.id_user='$id_user'");
+        return $query;      
+      }
+
+      function get_jadwal_ngajar($id_user){
+        $query=$this->db->query("SELECT a.kelas, a.hari, a.mulai_praktikum, a.selesai_praktikum FROM tbl_kelas_matkul AS a WHERE asdos_1='$id_user' or asdos_2='$id_user'");
+        return $query;      
+      }
+
+      function lab_orkom($hari){
+        $query = $this->db->query("SELECT a.kelas, a.hari, a.mulai_praktikum, a.selesai_praktikum FROM tbl_kelas_matkul AS a  WHERE lab = '1' AND hari = '$hari' ");
+        // $query = $this->db->query("SELECT * FROM tbl_kelas_matkul WHERE lab = '1' AND hari = '$hari' ");
+        return $query;
+      }
+      
+      function lab_ddi($hari){
+        $query = $this->db->query("SELECT a.kelas, a.hari, a.mulai_praktikum, a.selesai_praktikum FROM tbl_kelas_matkul AS a  WHERE lab = '0' AND hari = '$hari' ");
+        // $query = $this->db->query("SELECT * FROM tbl_kelas_matkul WHERE lab = '1' AND hari = '$hari' ");
+        return $query;
+      }
 }

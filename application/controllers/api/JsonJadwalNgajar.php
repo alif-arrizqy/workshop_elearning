@@ -1,5 +1,6 @@
 <?php error_reporting(0) ?>
 <?php
+
 use Restserver\Libraries\REST_Controller;
 
 defined('BASEPATH') or exit('No Direct script allowed');
@@ -7,7 +8,7 @@ defined('BASEPATH') or exit('No Direct script allowed');
 require APPPATH . '/libraries/REST_Controller.php';
 require APPPATH . '/libraries/Format.php';
 
-class JsonUser extends REST_Controller
+class JsonJadwalNgajar extends REST_Controller
 {
 
     function __construct()
@@ -17,32 +18,23 @@ class JsonUser extends REST_Controller
         $this->load->model('main_model');
     }
 
-    function index_get() {
-        $id_user = $this->session->userdata('ses_idlogin');
-        // $id_user = $this->get('id_user');        
+    function index_get()
+    {
+        // $id_user = $this->session->userdata('ses_idlogin');
+        $id_user = $this->get('id_user');
+        $data_kelas_matkul = $this->main_model->get_jadwal_ngajar($id_user)->result();
+
         if ($id_user === NULL) {
             $this->response([
                 'status' => FALSE,
                 'message' => 'No users were found'
             ], REST_Controller::HTTP_NOT_FOUND);
         } else {
-            $data = array(
-                $user = $this->main_model->get_detail_user($id_user)->result(),
-            );
-        }
-        // hide output null
-        $hasil = (object) array_filter((array) $data);
-        if ($data) {
+            $hasil = (object) array_filter((array) $data_kelas_matkul);
             $this->response([
                 'status' => TRUE,
                 'data' => $hasil
-                // 'message' => 'id found'
             ], REST_Controller::HTTP_OK);
-        } else {
-            $this->response([
-                'status' => FALSE,
-                'message' => 'No users were found'
-            ], REST_Controller::HTTP_NOT_FOUND);
         }
     }
 }

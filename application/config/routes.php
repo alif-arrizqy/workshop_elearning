@@ -184,6 +184,8 @@ $route['UserApi'] = 'api/JsonUser/index_get';
 $route['LoginApi'] = 'api/JsonLogin/index_get';
 $route['JadwalPribadiApi'] = 'api/JsonJadwalPribadi/index_get';
 $route['JadwalNgajarApi'] = 'api/JsonJadwalNgajar/index_get';
+$route['JadwalOrkomApi'] = 'api/JsonJadwalOrkom/index_get';
+$route['JadwalDDIApi'] = 'api/JsonJadwalDDI/index_get';
 
 $route['default_controller'] = 'LoginDashboard/loginelearningUser';
 // $route['default_controller'] = 'Json/json_login';

@@ -198,7 +198,7 @@ class User extends CI_Controller {
 		    	$this->session->set_userdata('ses_name',$inputNama);
 				$this->session->set_userdata('ses_username',$inputUsername);
 				$this->session->set_userdata('ses_email',$inputEmail);
-				$this->session->set_userdata('ses_foto',$gambar);
+				// $this->session->set_userdata('ses_foto',$gambar);
 				
 	 			if($success){
 	 				$this->session->set_flashdata('sukses', 'Data berhasil diubah !!! Terimakasih ..');
@@ -475,13 +475,13 @@ class User extends CI_Controller {
 	function hapusgambar_user($id_user){
     $kirimdata['gambar'] = '';
 		$this->main_model->update_mahasiswa($kirimdata, $id_user);
-    $this->session->set_userdata('ses_foto','');
-    redirect('dashboard_user');
+    	$this->session->set_userdata('ses_foto','');
+    	redirect('dashboard_user');
 	}
 
 	function v_asdos_user(){
 		$data = array(
-      'data_asdos' => $this->main_model->get_all_asdos()->result(),
+      		'data_asdos' => $this->main_model->get_all_asdos()->result(),
     );
 		$this->load->view('user/kelengkapan/header');
 		$this->load->view('user/v_asdos', $data);

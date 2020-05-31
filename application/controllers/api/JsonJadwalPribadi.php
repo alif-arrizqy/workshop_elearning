@@ -51,7 +51,7 @@ class JsonJadwalPribadi extends REST_Controller
             if (!empty($sistem_instrumentasi)) {
                 $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_instrumentasi)->result_array();
                 $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
-                $asdos2 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_2'])->result();
+                $asdos2 = $this->main_model->get_asdos2_iduser($matkul[0]['asdos_2'])->result();
                 foreach ($asdos1 as $asd1) {
                 }
                 foreach ($asdos2 as $asd2) {
