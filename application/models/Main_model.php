@@ -749,7 +749,12 @@ class Main_model extends CI_Model{
       }
 
       function get_jadwal_ngajar($id_user){
-        $query=$this->db->query("SELECT a.kelas, a.hari, a.mulai_praktikum, a.selesai_praktikum FROM tbl_kelas_matkul AS a WHERE asdos_1='$id_user' or asdos_2='$id_user'");
+        $query=$this->db->query("SELECT a.* FROM tbl_kelas_matkul AS a WHERE asdos_1='$id_user' or asdos_2='$id_user'");
+        return $query;      
+      
+      }
+      function get_qrcode($kode){
+        $query=$this->db->query("SELECT * FROM tbl_qrcode WHERE kode='$kode' && status='1'");
         return $query;      
       }
 

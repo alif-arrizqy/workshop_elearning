@@ -180,12 +180,20 @@ $route['v_asdos_user'] = 'User/v_asdos_user';
 	$route['cetak_nilai/(:num)/(:any)'] = 'Main/cetak_nilai/$1/$2';
 
 //API JSON
-$route['UserApi'] = 'api/JsonUser/index_get';
-$route['LoginApi'] = 'api/JsonLogin/index_get';
-$route['JadwalPribadiApi'] = 'api/JsonJadwalPribadi/index_get';
-$route['JadwalNgajarApi'] = 'api/JsonJadwalNgajar/index_get';
-$route['JadwalOrkomApi'] = 'api/JsonJadwalOrkom/index_get';
-$route['JadwalDDIApi'] = 'api/JsonJadwalDDI/index_get';
+$route['LoginApi'] = 'api/DataJson/get_login';
+$route['UserApi'] = 'api/DataJson/get_user';
+$route['JadwalPribadiApi'] = 'api/DataJson/get_JadwalPribadi';
+$route['JadwalNgajarApi'] = 'api/DataJson/get_JadwalNgajar';
+$route['JadwalOrkomApi'] = 'api/DataJson/get_JadwalOrkom';
+$route['JadwalDDIApi'] = 'api/DataJson/get_JadwalDDI';
+
+//json lama
+// $route['UserApi'] = 'api/JsonLogin/aser_get';
+// $route['LoginApi'] = 'api/JsonLogin/get_login';
+// $route['JadwalPribadiApi'] = 'api/JsonJadwalPribadi/index_get';
+// $route['JadwalNgajarApi'] = 'api/JsonJadwalNgajar/index_get';
+// $route['JadwalOrkomApi'] = 'api/JsonJadwalOrkom/index_get';
+// $route['JadwalDDIApi'] = 'api/JsonJadwalDDI/index_get';
 
 $route['default_controller'] = 'LoginDashboard/loginelearningUser';
 // $route['default_controller'] = 'Json/json_login';

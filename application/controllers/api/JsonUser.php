@@ -18,8 +18,8 @@ class JsonUser extends REST_Controller
     }
 
     function index_get() {
-        $id_user = $this->session->userdata('ses_idlogin');
-        // $id_user = $this->get('id_user');        
+        // $id_user = $this->session->userdata('ses_idlogin');
+        $id_user = $this->get('id_user');        
         if ($id_user === NULL) {
             $this->response([
                 'status' => FALSE,

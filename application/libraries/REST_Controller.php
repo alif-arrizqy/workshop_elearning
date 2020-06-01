@@ -645,7 +645,7 @@ abstract class REST_Controller extends \CI_Controller {
 	    if (!method_exists($this, $controller_method)) {
 		    $controller_method = "index_" . $this->request->method;
 		    array_unshift($arguments, $object_called);
-	    }
+        }
 
         // Do we want to log this method (if allowed by config)?
         $log_method = ! (isset($this->methods[$controller_method]['log']) && $this->methods[$controller_method]['log'] === FALSE);

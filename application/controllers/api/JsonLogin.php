@@ -1,11 +1,8 @@
-<?php error_reporting(0)?>
+<?php error_reporting(0) ?>
 <?php
-use Restserver\Libraries\REST_Controller;
-
 defined('BASEPATH') or exit('No Direct script allowed');
-
+use Restserver\Libraries\REST_Controller;
 require APPPATH . '/libraries/REST_Controller.php';
-require APPPATH . '/libraries/Format.php';
 
 class JsonLogin extends REST_Controller
 {
@@ -22,20 +19,20 @@ class JsonLogin extends REST_Controller
         // $id_user = $this->session->userdata('ses_idlogin');
         $username = $this->get('username');
         $password = $this->get('password');
-        
+
         $cekauth = $this->login_model->auth_user($username, $password);
         if ($cekauth->num_rows() > 0){
             $data = $cekauth->row_array();
             $biodatalengkapuser = $this->login_model->select_biodata_user($data['id_user']);
-				foreach ($biodatalengkapuser as $hasil) {
-					$email = $hasil->email;
+    			foreach ($biodatalengkapuser as $hasil) {
+    				$email = $hasil->email;
                 }
                 $this->session->set_userdata('ses_idlogin', $data['id_user']);
-				$this->session->set_userdata('ses_name', $data['nama']);
-				$this->session->set_userdata('ses_username', $data['username']);
-				$this->session->set_userdata('ses_email', $email);
-				$this->session->set_userdata('ses_foto', $data['gambar']);
-				$this->session->set_userdata('ses_level', $data['akses']);
+    			$this->session->set_userdata('ses_name', $data['nama']);
+    			$this->session->set_userdata('ses_username', $data['username']);
+    			$this->session->set_userdata('ses_email', $email);
+    			$this->session->set_userdata('ses_foto', $data['gambar']);
+    			$this->session->set_userdata('ses_level', $data['akses']);
         } else {
             $this->response([
                 'status' => FALSE,
