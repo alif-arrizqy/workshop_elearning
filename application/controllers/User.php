@@ -19,7 +19,8 @@ class User extends CI_Controller {
 		$data = array(
 			'data_user' => $this->main_model->detail_user($id_user)->result(),
 			'data_kelas_mhs' => $this->main_model->get_kelas_mhs($id_user)->result(),
-  	  		'data_kelas_matkul' => $this->main_model->get_kelas_matkulBy($id_user),
+			'data_kelas_matkul' => $this->main_model->get_kelas_matkulBy($id_user),
+			'detail_matkul' => $this->main_model->get_all_qrcode()->result(),
 	  );
 		$this->load->view('user/kelengkapan/header');
 		$this->load->view('user/profile', $data);
@@ -267,10 +268,10 @@ class User extends CI_Controller {
 		
 		if($success){
 			$this->session->set_flashdata('sukses', 'Data berhasil disimpan !!! Terimakasih ..');
-		redirect('lihat_ajar/'.$kelas_matkul_id."/".$kode);
+		redirect('user/absen/'.$kelas_matkul_id."/".$kode);
 		}else{
 			$this->session->set_flashdata('gagal', 'Data gagal disimpan !!! Terimakasih ..');
-		redirect('lihat_ajar/'.$kelas_matkul_id."/".$kode);
+		redirect('user/absen/'.$kelas_matkul_id."/".$kode);
 		}
 	}
 
@@ -305,10 +306,10 @@ class User extends CI_Controller {
 		
 		if($success){
 			$this->session->set_flashdata('sukses', 'Data berhasil disimpan !!! Terimakasih ..');
-		redirect('lihat_ajar/'.$kelas_matkul_id."/".$kode);
+		redirect('user/v_nilai/'.$kelas_matkul_id."/".$kode);
 		}else{
 			$this->session->set_flashdata('gagal', 'Data gagal disimpan !!! Terimakasih ..');
-		redirect('lihat_ajar/'.$kelas_matkul_id."/".$kode);
+		redirect('user/v_nilai/'.$kelas_matkul_id."/".$kode);
 		}
 	}
 
@@ -496,4 +497,102 @@ class User extends CI_Controller {
 		$this->load->view('user/v_asdos', $data);
 		$this->load->view('user/kelengkapan/footer');
 	}
+
+	function matkul_diambil(){
+		$id_user = $this->session->userdata('ses_idlogin');
+		$data = array(
+			'data_user' => $this->main_model->detail_user($id_user)->result(),
+			'data_kelas_mhs' => $this->main_model->get_kelas_mhs($id_user)->result(),
+  	  		'data_kelas_matkul' => $this->main_model->get_kelas_matkulBy($id_user),
+	  );
+		$this->load->view('user/kelengkapan/header');
+		$this->load->view('user/nilai_matakuliah/matkul_diambil', $data);
+		$this->load->view('user/kelengkapan/footer');
+	}
+
+	function v_absen_user(){
+		$id_user = $this->session->userdata('ses_idlogin');
+		$data = array(
+			'data_user' => $this->main_model->detail_user($id_user)->result(),
+			'data_kelas_mhs' => $this->main_model->get_kelas_mhs($id_user)->result(),
+  	  		'data_kelas_matkul' => $this->main_model->get_kelas_matkulBy($id_user),
+	  );
+		$this->load->view('user/kelengkapan/header');
+		$this->load->view('user/proses_data/absen/v_absen_user', $data);
+		$this->load->view('user/kelengkapan/footer');
+	}
+
+	function absen($id_kelas_matkul, $kode)
+	{
+		$data = array(
+			'data_absensi' => $this->main_model->get_all_absen_mhs($id_kelas_matkul, $kode),
+		);
+		$this->load->view('user/kelengkapan/header');
+		$this->load->view('user/proses_data/absen/v_absen', $data);
+		$this->load->view('user/kelengkapan/footer');
+	}
+
+	function edit_absen($id_user, $id_kelas_matkul)
+	{
+		$data = array(
+			'data_absensi' => $this->main_model->ubah_absen_mhs($id_user, $id_kelas_matkul)->result(),
+		);
+		$this->load->view('user/proses_data/absen/edit_absen', $data);
+	}
+
+	function cetak_absen($id_kelas_matkul, $kode)
+	{
+		$data = array(
+			'data_cetak_absensi' => $this->main_model->get_all_cetak_absen_mhs($id_kelas_matkul, $kode),
+		);
+		$this->load->view('user/proses_data/absen/cetak_absen', $data);
+	}
+
+	function v_nilai_user(){
+		$id_user = $this->session->userdata('ses_idlogin');
+		$data = array(
+			'data_user' => $this->main_model->detail_user($id_user)->result(),
+			'data_kelas_mhs' => $this->main_model->get_kelas_mhs($id_user)->result(),
+  	  		'data_kelas_matkul' => $this->main_model->get_kelas_matkulBy($id_user),
+	  );
+		$this->load->view('user/kelengkapan/header');
+		$this->load->view('user/proses_data/nilai/v_nilai_user', $data);
+		$this->load->view('user/kelengkapan/footer');
+	}
+
+	function v_nilai($id_kelas_matkul, $kode)
+	{
+		$data = array(
+			'data_nilai' => $this->main_model->get_all_nilai_mhs($id_kelas_matkul, $kode),
+		);
+		$this->load->view('user/kelengkapan/header');
+		$this->load->view('user/proses_data/nilai/v_nilai', $data);
+		$this->load->view('user/kelengkapan/footer');
+	}
+
+	function edit_nilai($id_user, $id_kelas_matkul)
+	{
+		$data = array(
+			'data_nilai' => $this->main_model->ubah_nilai_mhs($id_user, $id_kelas_matkul)->result(),
+		);
+		$this->load->view('user/proses_data/nilai/edit_nilai', $data);
+	}
+
+	function cetak_nilai($id_kelas_matkul, $kode)
+	{
+		$data = array(
+			'data_cetak_nilai' => $this->main_model->get_all_cetak_nilai_mhs($id_kelas_matkul, $kode),
+		);
+		$this->load->view('user/proses_data/nilai/cetak_nilai', $data);
+	}
+
+	// function detail_matkul(){
+	// 	$data = array(
+	// 		'detail_matkul' => $this->main_model->get_all_qrcode()->result(),
+	// 	);
+	// 	$this->load->view('admin/kelengkapan/header');
+	// 	$this->load->view('admin/master_data/qrcode/v_qrcode', $data);
+	// 	$this->load->view('admin/kelengkapan/footer');
+	// }
+
 }

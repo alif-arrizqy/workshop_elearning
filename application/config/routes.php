@@ -91,6 +91,17 @@ $route['update_penilaian_user'] = 'User/update_penilaian';
 $route['ambil_matkul_user/(:num)'] = 'User/ambil_matkul_mahasiswa_user/$1';
 $route['save_ambil_matkul_user'] = 'User/save_ambil_matkul_user';
 $route['v_asdos_user'] = 'User/v_asdos_user';
+//Absen user
+$route['matkul_diambil'] = 'User/matkul_diambil';
+$route['v_absen_user'] = 'User/v_absen_user';
+$route['absen'] = 'User/absen';
+$route['edit_absen'] = 'User/edit_absen';
+$route['cetak_absen'] = 'User/cetak_absen';
+//Nilai user
+$route['v_nilai_user'] = 'User/v_nilai_user';
+$route['v_nilai'] = 'User/v_nilai';
+$route['edit_nilai'] = 'User/edit_nilai';
+$route['cetak_nilai'] = 'User/cetak_nilai';
 
 
 	//tabel administrator

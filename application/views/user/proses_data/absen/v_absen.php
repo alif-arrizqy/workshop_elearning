@@ -9,11 +9,11 @@
             <div class="x_title">
               <h2>Data Absensi (<?=$hasil1->kelas?>)<small><b>(ubah)</b></small></h2>
               <ul class="nav navbar-right panel_toolbox">
-                <a href="<?=base_url('absen_kelas_matkul/'.$matkul_id)?>" class="btn btn-info btn-md"><i class="fa fa-reply"></i> Kembali</a>
+                <a href="<?=base_url('user/v_absen_user/'.$matkul_id)?>" class="btn btn-info btn-md"><i class="fa fa-reply"></i> Kembali</a>
                 <li class="dropdown navbar-right">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="menu"><i class="fa fa-wrench"></i></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="<?= base_url('cetak_absen/') . $hasil1->id_kelas_matkul . "/" . $hasil1->kode ?> " target="_blank"><span class="fa fa-print"></span>&nbsp;Cetak Data</a></li>
+                    <li><a href="<?= base_url('cetak_absen/') . $hasil1->id_kelas_matkul . "/" . $hasil1->kode ?>" target="_blank"><span class="fa fa-print"></span>&nbsp;Cetak Data</a></li>
                   </ul>
                 </li>
               </ul>
@@ -65,7 +65,7 @@
                       <td width="4%" align="center"><?php if($hasil->a_9 == 0){echo"<i class='fa fa-times'></i>";}else{echo"<i class='fa fa-check'></i>";}?></td>
                       <td width="4%" align="center"><?php if($hasil->a_10 == 0){echo"<i class='fa fa-times'></i>";}else{echo"<i class='fa fa-check'></i>";}?></td>
                       <td width="4%" align="center">
-                        <a href="<?= base_url('edit_absen/').$hasil->id_user."/".$hasil->id_kelas_matkul;?>" id="ubah_absen" data-toggle="modal" data-target="#modal_edit_absen" class="btn btn-success btn-xs" title="ubah"><span class="fa fa-pencil"></span></a>
+                        <a href="<?= base_url('edit_absen_user/').$hasil->id_user."/".$hasil->id_kelas_matkul;?>" id="ubah_absen" data-toggle="modal" data-target="#modal_edit_absen" class="btn btn-success btn-xs" title="ubah"><span class="fa fa-pencil"></span></a>
                       </td>
                     </tr>
                   <?php } ?>
@@ -75,6 +75,6 @@
           </div>
         </div>
       </div>
-    <?php }else{$this->session->set_flashdata('gagal', 'Tidak ada mahasiswa di kelas ini !!!');redirect('v_absensi');} ?>
+    <?php }else{$this->session->set_flashdata('gagal', 'Tidak ada mahasiswa di kelas ini !!!');redirect('user/absen');} ?>
   </div> 
   <div class="modal fade" id="modal_edit_absen" tabindex="-1" role="dialog" aria-labelledby="largeModal2" aria-hidden="true"></div>

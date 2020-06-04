@@ -60,7 +60,7 @@
           <div class="x_title">
             <h2>Data Penilaian (<?= $hasil->kelas ?>)<small><b>(ubah)</b></small></h2>
             <ul class="nav navbar-right panel_toolbox">
-              <a href="<?= base_url('nilai_kelas_matkul/' . $matkul_id) ?>" class="btn btn-info btn-md"><i class="fa fa-reply"></i> Kembali</a>
+              <a href="<?= base_url('user/v_nilai_user/' . $matkul_id) ?>" class="btn btn-info btn-md"><i class="fa fa-reply"></i> Kembali</a>
               <li class="dropdown navbar-right">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" title="menu"><i class="fa fa-wrench"></i></a>
                 <ul class="dropdown-menu" role="menu">
@@ -146,7 +146,7 @@
                       } ?>
                     </td>
                     <td width="4%" align="center">
-                      <a href="<?= base_url('edit_nilai/') . $hasil->id_user . "/" . $hasil->id_kelas_matkul; ?>" id="ubah_nilai" data-toggle="modal" data-target="#modal_edit_nilai" class="btn btn-success btn-xs" title="ubah"><span class="fa fa-pencil"></span></a>
+                      <a href="<?= base_url('user/edit_nilai/') . $hasil->id_user . "/" . $hasil->id_kelas_matkul; ?>" id="ubah_nilai" data-toggle="modal" data-target="#modal_edit_nilai" class="btn btn-success btn-xs" title="ubah"><span class="fa fa-pencil"></span></a>
                     </td>
                   </tr>
                 <?php } ?>
@@ -161,7 +161,7 @@
 
   } else {
     $this->session->set_flashdata('gagal', 'Tidak ada mahasiswa di kelas ini !!!');
-    redirect('v_penilaian');
+    redirect('v_nilai');
   } ?>
 </div>
 

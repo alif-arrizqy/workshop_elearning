@@ -25,13 +25,25 @@
             <div class="clearfix"></div>
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-            <?php $level = $this->session->userdata('ses_level');?>
+            <?php $level = $this->session->userdata('ses_level');
+             if($level == 1){$sbg = "Mahasiswa";}else if($level == 2){$sbg = "Asisten Praktikum";}else if($level == 3){$sbg = "Asisten Praktikum / Mahasiswa";}else if($level == 4){$sbg = "Alumni / Umum";} ?>
+
               <div class="menu_section">
                 <br>
                 <h3>MENU UTAMA</h3>
                 <ul class="nav side-menu">
                   <li><a href="<?= base_url('dashboard_user')?>"><i class="fa fa-home"></i> Dashboard</a></li>
                   <li><a href="<?= base_url('v_asdos_user')?>"><i class="fa fa-users"></i> Asisten Praktikum</a></li>
+                  <li><a href="<?= base_url('matkul_diambil')?>"><i class="fa fa-trophy"></i> Nilai Matakuliah</a></li>
+                  <?php if($level == 2 || $level == 3 || $level == 4){ ?>
+                   <li><a><i class="fa fa-edit"></i> Proses Data <span class="fa fa-chevron-down"></span></a>
+                     <?php $level = $this->session->userdata('ses_level'); ?>
+                    <ul class="nav child_menu">
+                      <li><a href="<?= base_url('v_absen_user') ?>">Absensi Mahasiswa</a></li>
+                      <li><a href="<?= base_url('v_nilai_user') ?>">Penilaian Mahasiswa</a></li>
+                    </ul>
+                  </li>
+                  <?php } ?>
               </div>
 
             </div>
