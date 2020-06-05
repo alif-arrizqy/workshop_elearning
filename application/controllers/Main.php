@@ -24,6 +24,10 @@ class Main extends CI_Controller
 		$this->load->view('admin/kelengkapan/footer');
 	}
 
+	function under_contruction(){
+		$this->load->view('under_contruction');
+	}
+
 	function profile_admin()
 	{
 		$id_admin = $this->session->userdata('ses_idlogin');

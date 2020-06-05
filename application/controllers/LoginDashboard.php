@@ -221,12 +221,10 @@ class LoginDashboard extends CI_Controller
 				if (empty($email)){
 					$this->session->set_flashdata('msg', 'Jangan Lupa Untuk Menambahkan Email Yang Aktif Anda Gunakan Sekarang !!');  
 					redirect('dashboard_user');
-					redirect('LoginApi');
 				  } else {
-					// $this->session->set_flashdata('msg', 'Selamat Datang ' . $data['nama'] . ' di Panel Elearning Workshop sebagai ' . $sbg . ' !!!');
-					$this->session->set_flashdata('msg', 'Jangan Lupa Untuk Menambahkan Email Yang Aktif Anda Gunakan Sekarang !!');  
+					$this->session->set_flashdata('msg', 'Selamat Datang ' . $data['nama'] . ' di Panel Elearning Workshop sebagai ' . $sbg . ' !!!');
+					// $this->session->set_flashdata('msg', 'Jangan Lupa Untuk Menambahkan Email Yang Aktif Anda Gunakan Sekarang !!');  
 					redirect('dashboard_user');
-					// redirect('LoginApi');
 				  }
 			} else {
 				$this->session->set_flashdata('msg', 'Tidak bisa masuk panel dasboard, mungkin ada kesalahan saat menginput data !!!');

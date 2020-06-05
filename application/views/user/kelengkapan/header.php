@@ -34,7 +34,7 @@
                 <ul class="nav side-menu">
                   <li><a href="<?= base_url('dashboard_user')?>"><i class="fa fa-home"></i> Dashboard</a></li>
                   <li><a href="<?= base_url('v_asdos_user')?>"><i class="fa fa-users"></i> Asisten Praktikum</a></li>
-                  <li><a href="<?= base_url('matkul_diambil')?>"><i class="fa fa-trophy"></i> Nilai Matakuliah</a></li>
+                  <li><a href="<?= base_url('matkul_diambil')?>"><i class="fa fa-trophy"></i> Nilai Saya</a></li>
                   <?php if($level == 2 || $level == 3 || $level == 4){ ?>
                    <li><a><i class="fa fa-edit"></i> Proses Data <span class="fa fa-chevron-down"></span></a>
                      <?php $level = $this->session->userdata('ses_level'); ?>

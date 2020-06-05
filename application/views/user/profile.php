@@ -37,6 +37,7 @@
             endforeach; 
           ?>
           <?php if(empty($email)){
+            // $this->load->view('user/modal');
             $this->session->set_flashdata('msg', 'Jangan Lupa Untuk Menambahkan Email Yang Aktif Anda Gunakan Sekarang !!');  
           } else if (!empty($email)){
             $this->session->set_flashdata('msg', 'Pastikan Email Yang Anda Gunakan Aktif');  
@@ -125,7 +126,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Detail Matakuliah</h2>
+          <h2>Mata Kuliah Yang Di Ajar</h2>
           <div class="clearfix"></div>
         </div>
         <div class="x_content"> 

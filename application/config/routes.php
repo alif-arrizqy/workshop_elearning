@@ -198,15 +198,7 @@ $route['JadwalNgajarApi'] = 'api/DataJson/get_JadwalNgajar';
 $route['JadwalOrkomApi'] = 'api/DataJson/get_JadwalOrkom';
 $route['JadwalDDIApi'] = 'api/DataJson/get_JadwalDDI';
 
-//json lama
-// $route['UserApi'] = 'api/JsonLogin/aser_get';
-// $route['LoginApi'] = 'api/JsonLogin/get_login';
-// $route['JadwalPribadiApi'] = 'api/JsonJadwalPribadi/index_get';
-// $route['JadwalNgajarApi'] = 'api/JsonJadwalNgajar/index_get';
-// $route['JadwalOrkomApi'] = 'api/JsonJadwalOrkom/index_get';
-// $route['JadwalDDIApi'] = 'api/JsonJadwalDDI/index_get';
-
 $route['default_controller'] = 'LoginDashboard/loginelearningUser';
-// $route['default_controller'] = 'Json/json_login';
+// $route['default_controller'] = 'Main/under_contruction';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

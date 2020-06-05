@@ -75,14 +75,17 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
+	// --------hosting connection-------
 	'hostname' => 'mysql.hostinger.com',
 	'username' => 'u177600864_wrkelearning',
 	'password' => 'wrkelearning',
 	'database' => 'u177600864_wrkelearning',
-// 	'hostname' => 'localhost',
-// 	'username' => 'root',
-// 	'password' => '',
-// 	'database' => 'u177600864_wrkelearning',
+	// ------local connection-------
+	// 'hostname' => 'localhost',
+	// 'username' => 'root',
+	// 'password' => '',
+	// 'database' => 'wrkelearning',
+	// ========================
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

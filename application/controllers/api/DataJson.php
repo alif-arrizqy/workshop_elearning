@@ -15,7 +15,6 @@ class DataJson extends CI_Controller
     function get_login()
     {
         $url = "workshopelearning.com/";
-        // $id_user = $this->session->userdata('ses_idlogin');
         $username = $_GET['username'];
         $password = $_GET['password'];
 
@@ -91,8 +90,8 @@ class DataJson extends CI_Controller
     function get_user()
     {
         $url = "localhost/workshopelearning/";
-        // $id_user = $this->session->userdata('ses_idlogin');
-        $id_user = $_GET['id_user'];
+        $id_user = $this->session->userdata('ses_idlogin');
+        // $id_user = $_GET['id_user'];
         if (empty($id_user)) {
             $responsistem["status"] = "404 User Not Found";
             echo json_encode($responsistem);
