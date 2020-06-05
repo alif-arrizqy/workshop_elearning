@@ -20,7 +20,7 @@ class User extends CI_Controller {
 			'data_user' => $this->main_model->detail_user($id_user)->result(),
 			'data_kelas_mhs' => $this->main_model->get_kelas_mhs($id_user)->result(),
 			'data_kelas_matkul' => $this->main_model->get_kelas_matkulBy($id_user),
-			'detail_matkul' => $this->main_model->get_all_qrcode()->result(),
+			'qrcode_matkul_ajar' => $this->main_model->get_jadwal_ngajar($id_user)
 	  );
 		$this->load->view('user/kelengkapan/header');
 		$this->load->view('user/profile', $data);
