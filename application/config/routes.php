@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //Login Admin
-$route['login'] = 'LoginDashboard';
+// $route['login'] = 'LoginDashboard';
 $route['loginelearning'] = 'LoginDashboard/loginelearning';
 $route['logininventaris'] = 'LoginDashboard/logininventaris';
 $route['lupapass_admin'] = 'LoginDashboard/lupapass';
@@ -196,6 +196,6 @@ $route['JadwalDDIApi'] = 'api/DataJson/get_JadwalDDI';
 // $route['JadwalDDIApi'] = 'api/JsonJadwalDDI/index_get';
 
 $route['default_controller'] = 'LoginDashboard/loginelearningUser';
-// $route['default_controller'] = 'Json/json_login';
+// $route['default_controller'] = 'LoginDashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

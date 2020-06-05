@@ -5,6 +5,8 @@
 <?php }elseif($this->session->flashdata('msg')){ ?>
   <div class="flash-data" data-flashdata="<?= $this->session->flashdata('msg');?>"></div>
 <?php } ?>
+
+
 <div class="right_col" role="main">
   <div style="float: right;"><h2><?php $this->load->view('admin/kelengkapan/jam_aktif');?></h2></div>
   <!-- <div class="clearfix"></div> -->
@@ -35,13 +37,16 @@
               $password = $hasil->password;
               $kondisi_data = $hasil->kondisi_data;
             endforeach; 
-          ?>
-          <?php if(empty($email)){
-            $this->session->set_flashdata('msg', 'Jangan Lupa Untuk Menambahkan Email Yang Aktif Anda Gunakan Sekarang !!');  
-          } else if (!empty($email)){
-            $this->session->set_flashdata('msg', 'Pastikan Email Yang Anda Gunakan Aktif');  
-          }
-          ?>
+            ?>
+            
+            <?php if(empty($email)){
+              // Fitur untuk semester ganjil
+              // $this->load->view('user/modal');
+              $this->session->set_flashdata('msg', 'Jangan Lupa Untuk Menambahkan Email Yang Aktif Anda Gunakan Sekarang !!');
+            } else if (!empty($email)){
+              $this->session->set_flashdata('msg', 'Pastikan Email Yang Anda Gunakan Aktif');  
+            }
+            ?>
 
           <div class="col-md-3 col-sm-3 col-xs-12">
             <div align="center">
@@ -648,3 +653,4 @@
 </div> 
 <div class="modal fade" id="modal_user" tabindex="-1" role="dialog" aria-labelledby="largeModal2" aria-hidden="true"></div>
 <div class="modal fade" id="modal_ambil_matkul_user" tabindex="-1" role="dialog" aria-labelledby="largeModal2" aria-hidden="true"></div>
+

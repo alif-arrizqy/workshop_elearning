@@ -188,7 +188,7 @@
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="foto">Foto</label>
           <div class="col-md-9 col-sm-6 col-xs-12">
             <input type="file" id="myfoto" name="foto" placeholder="input Foto" class="form-control col-md-7 col-xs-12">
-            <input type="checkbox" id="lihat" name="lihat" value="1" onclick="tampil(this.checked);"> <span id="text"> Sembunyi</span>
+            <input type="checkbox" id="lihat" name="lihat" value="1" onclick="tampil(this.checked);"> <span id="text"><b>Ceklis Jika Tidak Mengganti Foto Profil</b></span>
             <br>
             <?php if(empty($gambar)){echo"<b>tidak ada foto</b>";}else{ ?>
               <img src="<?= base_url('assets/images/gambar_user/').$gambar;?>" width="5%" title="<?= $nama?>">
