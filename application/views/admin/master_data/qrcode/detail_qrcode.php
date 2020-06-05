@@ -10,6 +10,7 @@
           $nama_qrcode = $hasil->nama_qrcode;
           $qrcode = $hasil->qrcode;
           $kelas = $hasil->kelas;
+          $pertemuan = $hasil->pertemuan;
         endforeach; 
       ?>
       <div align="center">
@@ -21,8 +22,8 @@
           <td>: <?= $kelas?></td>
         </tr>
         <tr>
-          <td width="30%">Nama Qrcode</td>
-          <td>: <?= $nama_qrcode?></td>
+          <td width="30%">Pertemuan</td>
+          <td>: <?= $pertemuan?></td>
         </tr>
       </table>
     </div>

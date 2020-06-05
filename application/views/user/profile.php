@@ -169,8 +169,12 @@
               ?>
               <div class="col-md-3 col-sm-3 col-xs-12">
                 <div align="center">
-                  <a href="<?= base_url('detail_qrcode/') . $gbr['kode']; ?>" id="detail_qrcode" data-toggle="modal" data-target="#modal_detail_qrcode" title="detail <?= $gbr['qrcode']; ?>">
+                  <?php if(!empty($gbr['kode'])) { ?>
+                    <a href="<?= base_url('detail_qrcode/') . $gbr['kode']; ?>" id="detail_qrcode" data-toggle="modal" data-target="#modal_detail_qrcode" title="detail <?= $gbr['qrcode']; ?>">
+                  <?php } else if (empty($gbr['kode'])) { echo ""; }?>
+                  <?php if(!empty($gbr['qrcode'])) { ?>
                     <img src="<?= base_url('assets/images/imgqrcode/absen/') . $gbr['qrcode']; ?>" width="80%" height="80%">
+                  <?php } else if (empty($gbr['qrcode'])) { echo "no image"; } ?>
                   </a>
                 </div>
               </div>
@@ -182,7 +186,13 @@
                   </tr>
                   <tr>
                     <td width="30%">Pertemuan</td>
-                    <td>: <?= $gbr['pertemuan']; ?></td>
+                    <td>: <?php
+                          if (empty($gbr['pertemuan'])) {
+                            echo "-";
+                          } else if (!empty($gbr['pertemuan'])) {
+                            echo $gbr['pertemuan'];
+                          } ?>
+                    </td>
                   </tr>
                   <tr>
                     <td width="30%">Asisten Praktikum</td>
