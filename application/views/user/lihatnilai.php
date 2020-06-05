@@ -8,7 +8,7 @@
             <div class="x_title">
               <h2>Detail Absensi & Nilai</h2>
               <ul class="nav navbar-right panel_toolbox">
-                <a href="<?= base_url('dashboard_user') ?>" class="btn btn-info btn-md"><i class="fa fa-reply"></i> Kembali</a>
+                <a href="<?= base_url('matkul_diambil') ?>" class="btn btn-info btn-md"><i class="fa fa-reply"></i> Kembali</a>
               </ul>
               <div class="clearfix"></div>
             </div>
