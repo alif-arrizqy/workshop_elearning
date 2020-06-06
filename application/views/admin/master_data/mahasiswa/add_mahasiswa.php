@@ -5,7 +5,7 @@
       <option disabled selected>-- Pilih Tahun Masuk --</option>
       <?php
           $now=date('Y');
-          $awal = $now - 4;
+          $awal = $now - 6;
           $batas = $now + 1;
           for ($a=$awal;$a<=$batas;$a++)
           {
