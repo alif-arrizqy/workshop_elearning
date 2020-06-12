@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <img src="<?= base_url('assets/images/reminder.png'); ?>" style="border-radius: 20px;" width="100%">
+                <img src="<?= base_url('assets/images/penutupan_web.png'); ?>" style="border-radius: 20px;" width="100%">
             </div>
         </div>
     </div>

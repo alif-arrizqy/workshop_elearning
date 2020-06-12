@@ -19,13 +19,10 @@ class Main extends CI_Controller
 
 	function index()
 	{
+		// $this->load->view('under_contruction');
 		$this->load->view('admin/kelengkapan/header');
 		$this->load->view('admin/dashboard');
 		$this->load->view('admin/kelengkapan/footer');
-	}
-
-	function under_contruction(){
-		$this->load->view('under_contruction');
 	}
 
 	function profile_admin()

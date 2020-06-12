@@ -48,10 +48,11 @@
           endforeach;
           ?>
           <?php if (empty($email)) {
-            // $this->load->view('user/modal');
-            $this->session->set_flashdata('msg', 'Jangan Lupa Untuk Menambahkan Email Yang Aktif Anda Gunakan Sekarang !!');
+            $this->load->view('user/modal');
+            // $this->session->set_flashdata('msg', 'Jangan Lupa Untuk Menambahkan Email Yang Aktif Anda Gunakan Sekarang !!');
           } else if (!empty($email)) {
-            $this->session->set_flashdata('msg', 'Pastikan Email Yang Anda Gunakan Aktif');
+            $this->load->view('user/modal');
+            // $this->session->set_flashdata('msg', 'Pastikan Email Yang Anda Gunakan Aktif');
           }
           ?>
 
@@ -59,9 +60,13 @@
             <div align="center">
               <?php if (!empty($gambar)) { ?>
                 <img src="<?= base_url('assets/images/gambar_user/') . $gambar; ?>" style="border-radius: 20px;" width="80%" title="<?= $nama ?>">
-              <?php } else { ?>
-                <img src="<?= base_url('assets/images/user.png'); ?>" style="border-radius: 20px;" width="80%" title="Tidak ada Foto">
-              <?php } ?>
+                <?php } else { 
+                  if ($jk == 1) { ?>
+                  <img src="<?= base_url('assets/images/male.png'); ?>" style="border-radius: 20px;" width="80%" title="Tidak ada Foto">
+                      <?php } if ($jk == 0) { ?>
+                  <img src="<?= base_url('assets/images/female.png'); ?>" style="border-radius: 20px;" width="80%" title="Tidak ada Foto">
+                    <?php } ?>
+              <?php }?>
             </div>
           </div>
           <div class="col-md-9 col-sm-3 col-xs-12">
