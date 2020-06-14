@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //Login Admin
 $route['login'] = 'LoginDashboard';
 $route['loginelearning'] = 'LoginDashboard/loginelearning';
-$route['logininventaris'] = 'LoginDashboard/logininventaris';
+// $route['logininventaris'] = 'LoginDashboard/logininventaris';
 $route['lupapass_admin'] = 'LoginDashboard/lupapass';
 $route['auth_admin_elearning'] = 'LoginDashboard/auth_admin_elearning';
 $route['logout_admin_elearning'] = 'LoginDashboard/logout_admin_elearning';
@@ -197,8 +197,10 @@ $route['JadwalPribadiApi'] = 'api/DataJson/get_JadwalPribadi';
 $route['JadwalNgajarApi'] = 'api/DataJson/get_JadwalNgajar';
 $route['JadwalOrkomApi'] = 'api/DataJson/get_JadwalOrkom';
 $route['JadwalDDIApi'] = 'api/DataJson/get_JadwalDDI';
+$route['AbsenApi'] = 'api/DataJson/get_Absen';
+$route['NilaiApi'] = 'api/DataJson/get_Nilai';
 
-$route['default_controller'] = 'LoginDashboard/loginelearningUser';
-// $route['default_controller'] = 'Main/under_contruction';
+// $route['default_controller'] = 'LoginDashboard/loginelearningUser';
+$route['default_controller'] = 'LoginDashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

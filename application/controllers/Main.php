@@ -19,7 +19,6 @@ class Main extends CI_Controller
 
 	function index()
 	{
-		// $this->load->view('under_contruction');
 		$this->load->view('admin/kelengkapan/header');
 		$this->load->view('admin/dashboard');
 		$this->load->view('admin/kelengkapan/footer');

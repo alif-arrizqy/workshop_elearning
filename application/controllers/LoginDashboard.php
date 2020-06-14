@@ -13,7 +13,8 @@ class LoginDashboard extends CI_Controller
 
 	function index()
 	{
-		$this->load->view('admin/awal');
+		// $this->load->view('admin/awal');
+		$this->load->view('under_contruction');
 	}
 
 	function loginelearning()
