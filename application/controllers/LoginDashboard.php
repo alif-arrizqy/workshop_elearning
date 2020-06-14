@@ -16,11 +16,12 @@ class LoginDashboard extends CI_Controller
 		// $this->load->view('admin/awal');
 		$this->load->view('under_contruction');
 	}
-
+	
 	function loginelearning()
 	{
 		if ($this->session->userdata('masuk') != TRUE) {
-			$this->load->view('admin/login_dashboard_elearning');
+			// $this->load->view('admin/login_dashboard_elearning');
+			$this->load->view('under_contruction');
 		} else {
 			redirect('workshopadministrator');
 		}

@@ -148,7 +148,7 @@ class DataJson extends CI_Controller
     function get_JadwalPribadi()
     {
         $id_user = $this->session->userdata('ses_idlogin');
-        // $id_user = $this->get('id_user');
+        // $id_user = $_GET['id_user'];
         $data_kelas_mhs = $this->main_model->get_kelas_mhs($id_user)->result();
 
         if ($id_user === NULL) {
@@ -654,6 +654,2354 @@ class DataJson extends CI_Controller
             $hasil_get_jadwalddi["hasil jadwal orkom"] = $hasil;
             header('Content-Type: application/Json');
             echo json_encode($hasil_get_jadwalddi, TRUE);
+        }
+    }
+
+    function get_Absen()
+    {
+        $id_user = $this->session->userdata('ses_idlogin');
+        // $id_user = $_GET['id_user'];
+        $data_kelas_mhs = $this->main_model->get_kelas_mhs($id_user)->result();
+
+        if (empty($id_user)) {
+            $responsistem["status"] = "404 User ID Not Found";
+            echo json_encode($responsistem);
+        } else {
+            foreach ($data_kelas_mhs as $hasil_kelas) :
+                $sistem_instrumentasi = $hasil_kelas->sistem_instrumentasi;
+                $organisasi_komputer = $hasil_kelas->organisasi_komputer;
+                $elektronika = $hasil_kelas->elektronika;
+                $sistem_digital_1 = $hasil_kelas->sistem_digital_1;
+                $jaringan_komputer = $hasil_kelas->jaringan_komputer;
+                $sistem_digital_2 = $hasil_kelas->sistem_digital_2;
+                $sistem_mikroprosesor = $hasil_kelas->sistem_mikroprosesor;
+                $otomasi = $hasil_kelas->otomasi;
+                $administrasi_jaringan = $hasil_kelas->administrasi_jaringan;
+                $sistem_pemrograman_mikroprosesor = $hasil_kelas->sistem_pemrograman_mikroprosesor;
+                $mobile_programing = $hasil_kelas->mobile_programing;
+                $keamanan_jaringan = $hasil_kelas->keamanan_jaringan;
+                $pemrograman_python = $hasil_kelas->pemrograman_python;
+                $sistem_interface_mikrokontroler = $hasil_kelas->sistem_interface_mikrokontroler;
+                $robotik = $hasil_kelas->robotik;
+            endforeach;
+            if (!empty($sistem_instrumentasi)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_instrumentasi)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_sistem_instrumentasi = array(
+                    $hadir
+                );
+            }
+            if (!empty($organisasi_komputer)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($organisasi_komputer)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_organisasi_komputer = array(
+                    $hadir
+                );
+            }
+            if (!empty($elektronika)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($elektronika)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_elektronika = array(
+                    $hadir
+                );
+            }
+            if (!empty($sistem_digital_1)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_digital_1)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_sistem_digital_1 = array(
+                    $hadir
+                );
+            }
+            if (!empty($jaringan_komputer)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($jaringan_komputer)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_jaringan_komputer = array(
+                    $hadir
+                );
+            }
+            if (!empty($sistem_digital_2)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_digital_2)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_sistem_digital_2 = array(
+                    $hadir
+                );
+            }
+            if (!empty($sistem_mikroprosesor)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_mikroprosesor)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_sistem_mikroprosesor = array(
+                    $hadir
+                );
+            }
+            if (!empty($otomasi)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($otomasi)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_otomasi = array(
+                    $hadir
+                );
+            }
+            if (!empty($administrasi_jaringan)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($administrasi_jaringan)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_administrasi_jaringan = array(
+                    $hadir
+                );
+            }
+            if (!empty($sistem_pemrograman_mikroprosesor)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_pemrograman_mikroprosesor)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_sistem_pemrograman_mikroprosesor = array(
+                    $hadir
+                );
+            }
+            if (!empty($mobile_programing)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($mobile_programing)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_mobile_programing = array(
+                    $hadir
+                );
+            }
+            if (!empty($keamanan_jaringan)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($keamanan_jaringan)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_keamanan_jaringan = array(
+                    $hadir
+                );
+            }
+            if (!empty($pemrograman_python)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($pemrograman_python)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_pemrograman_python = array(
+                    $hadir
+                );
+            }
+            if (!empty($sistem_interface_mikrokontroler)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_interface_mikrokontroler)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_sistem_interface_mikrokontroler = array(
+                    $hadir
+                );
+            }
+            if (!empty($robotik)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($robotik)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $hadir['kelas'] = $matkul[0]['kelas'];
+                if ($data_absensi[0]['a_1'] == 0) {
+                    $hadir['absen 1'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 1'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_2'] == 0) {
+                    $hadir['absen 2'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 2'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_3'] == 0) {
+                    $hadir['absen 3'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 3'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_4'] == 0) {
+                    $hadir['absen 4'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 4'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_5'] == 0) {
+                    $hadir['absen 5'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 5'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_6'] == 0) {
+                    $hadir['absen 6'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 6'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_7'] == 0) {
+                    $hadir['absen 7'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 7'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_8'] == 0) {
+                    $hadir['absen 8'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 8'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_9'] == 0) {
+                    $hadir['absen 9'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 9'] = "Hadir";
+                }
+                if ($data_absensi[0]['a_10'] == 0) {
+                    $hadir['absen 10'] = "Tidak Hadir";
+                } else {
+                    $hadir['absen 10'] = "Hadir";
+                }
+                $data_robotik = array(
+                    $hadir
+                );
+            }
+        }
+        if (($sistem_instrumentasi) || ($organisasi_komputer) ||  ($elektronika) ||  ($sistem_digital_1) ||  ($jaringan_komputer) ||  ($sistem_digital_2) ||  ($sistem_mikroprosesor) ||  ($otomasi) ||  ($administrasi_jaringan) ||  ($sistem_pemrograman_mikroprosesor) ||  ($mobile_programing) ||  ($keamanan_jaringan) ||  ($pemrograman_python) ||  ($sistem_interface_mikrokontroler) ||  ($robotik)) {
+            $hasil = array(
+                $data_sistem_instrumentasi, $data_organisasi_komputer,
+                $data_elektronika, $data_administrasi_jaringan, $data_jaringan_komputer,
+                $data_keamanan_jaringan, $data_mobile_programing, $data_otomasi,
+                $data_pemrograman_python, $data_sistem_digital_1, $data_sistem_digital_2,
+                $data_sistem_interface_mikrokontroler, $data_sistem_mikroprosesor,
+                $data_sistem_pemrograman_mikroprosesor, $data_robotik
+            );
+            // hide output null
+            $hasil_null_array = (object) array_filter((array) $hasil);
+            $hasil_get_status_absen["Absensi Mata Kuliah"] = $hasil_null_array;
+            header('Content-Type: application/Json');
+            echo json_encode($hasil_get_status_absen, TRUE);
+        } else {
+            $responsistem["status"] = "404 Data Not Found";
+            echo json_encode($responsistem);
+        }
+    }
+
+    function get_Nilai()
+    {
+        $id_user = $this->session->userdata('ses_idlogin');
+        // $id_user = $_GET['id_user'];
+        $data_kelas_mhs = $this->main_model->get_kelas_mhs($id_user)->result();
+
+        if (empty($id_user)) {
+            $responsistem["status"] = "404 User ID Not Found";
+            echo json_encode($responsistem);
+        } else {
+            foreach ($data_kelas_mhs as $hasil_kelas) :
+                $sistem_instrumentasi = $hasil_kelas->sistem_instrumentasi;
+                $organisasi_komputer = $hasil_kelas->organisasi_komputer;
+                $elektronika = $hasil_kelas->elektronika;
+                $sistem_digital_1 = $hasil_kelas->sistem_digital_1;
+                $jaringan_komputer = $hasil_kelas->jaringan_komputer;
+                $sistem_digital_2 = $hasil_kelas->sistem_digital_2;
+                $sistem_mikroprosesor = $hasil_kelas->sistem_mikroprosesor;
+                $otomasi = $hasil_kelas->otomasi;
+                $administrasi_jaringan = $hasil_kelas->administrasi_jaringan;
+                $sistem_pemrograman_mikroprosesor = $hasil_kelas->sistem_pemrograman_mikroprosesor;
+                $mobile_programing = $hasil_kelas->mobile_programing;
+                $keamanan_jaringan = $hasil_kelas->keamanan_jaringan;
+                $pemrograman_python = $hasil_kelas->pemrograman_python;
+                $sistem_interface_mikrokontroler = $hasil_kelas->sistem_interface_mikrokontroler;
+                $robotik = $hasil_kelas->robotik;
+            endforeach;
+
+            if (!empty($sistem_instrumentasi)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_instrumentasi)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_sistem_instrumentasi = array(
+                    $tampil
+                );
+            }
+            if (!empty($organisasi_komputer)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($organisasi_komputer)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_organisasi_komputer = array(
+                    $tampil
+                );
+            }
+            if (!empty($elektronika)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($elektronika)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_elektronika = array(
+                    $tampil
+                );
+            }
+            if (!empty($sistem_digital_1)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_digital_1)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_sistem_digital_1 = array(
+                    $tampil
+                );
+            }
+            if (!empty($jaringan_komputer)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($jaringan_komputer)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_jaringan_komputer = array(
+                    $tampil
+                );
+            }
+            if (!empty($sistem_digital_2)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_digital_2)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_sistem_digital_2 = array(
+                    $tampil
+                );
+            }
+            if (!empty($sistem_mikroprosesor)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_mikroprosesor)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_sistem_mikroprosesor = array(
+                    $tampil
+                );
+            }
+            if (!empty($otomasi)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($otomasi)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_otomasi = array(
+                    $tampil
+                );
+            }
+            if (!empty($administrasi_jaringan)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($administrasi_jaringan)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_administrasi_jaringan = array(
+                    $tampil
+                );
+            }
+            if (!empty($sistem_pemrograman_mikroprosesor)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_pemrograman_mikroprosesor)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_sistem_pemrograman_mikroprosesor = array(
+                    $tampil
+                );
+            }
+            if (!empty($mobile_programing)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($mobile_programing)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_mobile_programing = array(
+                    $tampil
+                );
+            }
+            if (!empty($keamanan_jaringan)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($keamanan_jaringan)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_keamanan_jaringan = array(
+                    $tampil
+                );
+            }
+            if (!empty($pemrograman_python)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($pemrograman_python)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_pemrograman_python = array(
+                    $tampil
+                );
+            }
+            if (!empty($sistem_interface_mikrokontroler)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_interface_mikrokontroler)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_sistem_interface_mikrokontroler = array(
+                    $tampil
+                );
+            }
+            if (!empty($robotik)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($robotik)->result_array();
+                $id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
+                $data_absensi = $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $data_nilai = $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array();
+                $matkul_id = $data_nilai[0]['id_matkul'];
+                // panggil matkul sesuai dengan id
+                if ($matkul_id == 1) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 2) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 3) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 4) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 5) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 6) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 7) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 8) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 9) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 10) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 11) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 12) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 13) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 14) {
+                    $tugaspembagi = '5';
+                } elseif ($matkul_id == 15) {
+                    $tugaspembagi = '5';
+                }
+
+                // ############################## Kalkulasi Nilai #######################################
+                $data_presentase_nilai = $this->main_model->get_persentase_nilaiBY($matkul_id)->result_array();
+                $absen = $data_presentase_nilai[0]['absen'] * 100;
+                $kuis = $data_presentase_nilai[0]['kuis'] * 100;
+                $tugas = $data_presentase_nilai[0]['tugas'] * 100;
+                $uap = $data_presentase_nilai[0]['uap'] * 100;
+                $tugasakhir = $data_presentase_nilai[0]['tugasakhir'] * 100;
+
+                $totalabsen = $data_absensi[0]['a_1'] + $data_absensi[0]['a_2'] + $data_absensi[0]['a_3'] + $data_absensi[0]['a_4'] + $data_absensi[0]['a_5'] + $data_absensi[0]['a_6'] + $data_absensi[0]['a_7'] + $data_absensi[0]['a_8'] + $data_absensi[0]['a_9'] + $data_absensi[0]['a_10'];
+                $hasiltugas = $data_nilai[0]['tugas1'] + $data_nilai[0]['tugas2'] + $data_nilai[0]['tugas3'] + $data_nilai[0]['tugas4'] + $data_nilai[0]['tugas5'];
+
+                $totaltugas = $hasiltugas / $tugaspembagi;
+                $total_absen = ($totalabsen * 10 * $data_presentase_nilai[0]['absen']);
+                $total_tugas = $totaltugas * $data_presentase_nilai[0]['tugas'];
+                $total_kuis = $data_nilai[0]['kuis'] * $data_presentase_nilai[0]['kuis'];
+                $total_uap = $data_nilai[0]['uap'] * $data_presentase_nilai[0]['uap'];
+                $total_tugas_akhir = $data_nilai[0]['tugasakhir'] * $data_presentase_nilai[0]['tugasakhir'];
+                $total_seluruh = $total_absen + $total_tugas + $total_kuis + $total_uap + $total_tugas_akhir;
+
+                // ################################# Tampil di JSON #####################################
+                $tampil['kelas'] = $matkul[0]['kelas'];
+                $tampil['Tugas 1'] = $data_nilai[0]['tugas1'];
+                $tampil['Tugas 2'] = $data_nilai[0]['tugas2'];
+                $tampil['Tugas 3'] = $data_nilai[0]['tugas3'];
+                $tampil['Tugas 4'] = $data_nilai[0]['tugas4'];
+                $tampil['Tugas 5'] = $data_nilai[0]['tugas5'];
+                $tampil['Total Absen'] = $total_absen . " dari 10 Pertemuan";
+                $tampil['Total Tugas'] = $hasiltugas;
+                $tampil['Total Kuis'] = $data_nilai[0]['kuis'];
+                $tampil['Total UAP'] = $data_nilai[0]['uap'];
+                $tampil['Total Tugas Akhir'] = $data_nilai[0]['tugasakhir'];
+                $tampil['Persentase Absen'] = $absen . "% : " . round($total_absen);
+                $tampil['Persentase Tugas'] = $tugas . "% : " . round($total_tugas);
+                $tampil['Persentase Kuis'] = $kuis . "% : " . round($total_kuis);
+                $tampil['Persentase UAP'] = $uap . "% : " . round($total_uap);
+                $tampil['Persentase Tugas Akhir'] = $tugasakhir . "% : " . round($total_tugas_akhir);
+                $tampil['Total Nilai Akhir'] = round($total_seluruh);
+                if ($total_seluruh >= 85) {
+                    $tampil['Grade'] =  "A";
+                } elseif ($total_seluruh >= 75) {
+                    $tampil['Grade'] =  "B";
+                } elseif ($total_seluruh >= 60) {
+                    $tampil['Grade'] =  "C";
+                } elseif ($total_seluruh >= 50) {
+                    $tampil['Grade'] =  "D";
+                } else {
+                    $tampil['Grade'] =  "E";
+                }
+                $data_robotik = array(
+                    $tampil
+                );
+            }
+            
+        }
+        if (($sistem_instrumentasi) || ($organisasi_komputer) ||  ($elektronika) ||  ($sistem_digital_1) ||  ($jaringan_komputer) ||  ($sistem_digital_2) ||  ($sistem_mikroprosesor) ||  ($otomasi) ||  ($administrasi_jaringan) ||  ($sistem_pemrograman_mikroprosesor) ||  ($mobile_programing) ||  ($keamanan_jaringan) ||  ($pemrograman_python) ||  ($sistem_interface_mikrokontroler) ||  ($robotik)) {
+            $hasil = array(
+                $data_sistem_instrumentasi, $data_organisasi_komputer,
+                $data_elektronika, $data_administrasi_jaringan, $data_jaringan_komputer,
+                $data_keamanan_jaringan, $data_mobile_programing, $data_otomasi,
+                $data_pemrograman_python, $data_sistem_digital_1, $data_sistem_digital_2,
+                $data_sistem_interface_mikrokontroler, $data_sistem_mikroprosesor,
+                $data_sistem_pemrograman_mikroprosesor, $data_robotik
+            );
+            // hide output null
+            $hasil_null_array = (object) array_filter((array) $hasil);
+            $hasil_get_nilai["Nilai Mata Kuliah"] = $hasil_null_array;
+            header('Content-Type: application/Json');
+            echo json_encode($hasil_get_nilai, TRUE);
+        } else if (empty($sistem_instrumentasi) || empty($organisasi_komputer) ||  empty($elektronika) ||  empty($sistem_digital_1) ||  empty($jaringan_komputer) ||  empty($sistem_digital_2) ||  empty($sistem_mikroprosesor) ||  empty($otomasi) ||  empty($administrasi_jaringan) ||  empty($sistem_pemrograman_mikroprosesor) ||  empty($mobile_programing) ||  empty($keamanan_jaringan) ||  empty($pemrograman_python) ||  empty($sistem_interface_mikrokontroler) ||  empty($robotik)) {
+            $responsistem["status"] = "404 Data Not Found";
+            echo json_encode($responsistem);
         }
     }
 }
