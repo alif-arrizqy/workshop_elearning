@@ -29,7 +29,8 @@ class LoginDashboard extends CI_Controller
 	function loginelearningUser()
 	{
 		if ($this->session->userdata('masuk') != TRUE) {
-			$this->load->view('user/login_dashboard_elearning');
+			// $this->load->view('user/login_dashboard_elearning');
+			$this->load->view('under_contruction');
 		} else {
 			redirect('dashboard_user');
 		}
