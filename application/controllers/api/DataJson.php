@@ -90,13 +90,14 @@ class DataJson extends CI_Controller
     function get_user()
     {
         $url = "localhost/workshopelearning/";
-        $id_user = $this->session->userdata('ses_idlogin');
-        // $id_user = $_GET['id_user'];
-        if (empty($id_user)) {
-            $responsistem["status"] = "404 User Not Found";
-            echo json_encode($responsistem);
-        } else {
-            $value = $this->main_model->get_detail_user($id_user)->row_array();
+        // $id_user = $this->session->userdata('ses_idlogin');
+        $id_user = $_GET['id_user'];
+        $password = $_GET['password'];
+        $cekauth = $this->main_model->auth_api_user($id_user, $password);
+        if ($cekauth->num_rows() > 0) {
+            $data = $cekauth->row_array();
+
+            $value = $this->main_model->get_detail_user($data['id_user'])->row_array();
             $hsl['id_user'] = $value["id_user"];
             $hsl['npm'] = $value['npm'];
             $hsl['nama'] = $value['nama'];
@@ -142,19 +143,21 @@ class DataJson extends CI_Controller
             $hasil_get_login = (object) array_filter((array) $hasil_data);
             header('Content-Type: application/Json');
             echo json_encode($hasil_get_login, TRUE);
+        } else {
+            $responsistem["status"] = "404 Data Not Found, Please Check Your ID and Password";
+            echo json_encode($responsistem);
         }
     }
 
     function get_JadwalPribadi()
     {
-        $id_user = $this->session->userdata('ses_idlogin');
-        // $id_user = $_GET['id_user'];
-        $data_kelas_mhs = $this->main_model->get_kelas_mhs($id_user)->result();
-
-        if ($id_user === NULL) {
-            $responsistem["status"] = "404 Data Not Found";
-            echo json_encode($responsistem);
-        } else {
+        // $id_user = $this->session->userdata('ses_idlogin');
+        $id_user = $_GET['id_user'];
+        $password = $_GET['password'];
+        $cekauth = $this->main_model->auth_api_user($id_user, $password);
+        if ($cekauth->num_rows() > 0) {
+            $data = $cekauth->row_array();
+            $data_kelas_mhs = $this->main_model->get_kelas_mhs($data['id_user'])->result();
             foreach ($data_kelas_mhs as $hasil_kelas) :
                 $sistem_instrumentasi = $hasil_kelas->sistem_instrumentasi;
                 $organisasi_komputer = $hasil_kelas->organisasi_komputer;
@@ -530,25 +533,27 @@ class DataJson extends CI_Controller
                     $ddi
                 );
             }
-        }
+            if (($sistem_instrumentasi) || ($organisasi_komputer) ||  ($elektronika) ||  ($sistem_digital_1) ||  ($jaringan_komputer) ||  ($sistem_digital_2) ||  ($sistem_mikroprosesor) ||  ($otomasi) ||  ($administrasi_jaringan) ||  ($sistem_pemrograman_mikroprosesor) ||  ($mobile_programing) ||  ($keamanan_jaringan) ||  ($pemrograman_python) ||  ($sistem_interface_mikrokontroler) ||  ($robotik)) {
+                $hasil = array(
+                    $data_sistem_instrumentasi, $data_organisasi_komputer,
+                    $data_elektronika, $data_administrasi_jaringan, $data_jaringan_komputer,
+                    $data_keamanan_jaringan, $data_mobile_programing, $data_otomasi,
+                    $data_pemrograman_python, $data_sistem_digital_1, $data_sistem_digital_2,
+                    $data_sistem_interface_mikrokontroler, $data_sistem_mikroprosesor,
+                    $data_sistem_pemrograman_mikroprosesor, $data_robotik
 
-        if (($sistem_instrumentasi) || ($organisasi_komputer) ||  ($elektronika) ||  ($sistem_digital_1) ||  ($jaringan_komputer) ||  ($sistem_digital_2) ||  ($sistem_mikroprosesor) ||  ($otomasi) ||  ($administrasi_jaringan) ||  ($sistem_pemrograman_mikroprosesor) ||  ($mobile_programing) ||  ($keamanan_jaringan) ||  ($pemrograman_python) ||  ($sistem_interface_mikrokontroler) ||  ($robotik)) {
-            $hasil = array(
-                $data_sistem_instrumentasi, $data_organisasi_komputer,
-                $data_elektronika, $data_administrasi_jaringan, $data_jaringan_komputer,
-                $data_keamanan_jaringan, $data_mobile_programing, $data_otomasi,
-                $data_pemrograman_python, $data_sistem_digital_1, $data_sistem_digital_2,
-                $data_sistem_interface_mikrokontroler, $data_sistem_mikroprosesor,
-                $data_sistem_pemrograman_mikroprosesor, $data_robotik
-
-            );
-            // hide output null
-            $hasil_null_array = (object) array_filter((array) $hasil);
-            $hasil_get_jadwalpribadi["hasil jadwal pribadi"] = $hasil_null_array;
-            header('Content-Type: application/Json');
-            echo json_encode($hasil_get_jadwalpribadi, TRUE);
+                );
+                // hide output null
+                $hasil_null_array = (object) array_filter((array) $hasil);
+                $hasil_get_jadwalpribadi["hasil jadwal pribadi"] = $hasil_null_array;
+                header('Content-Type: application/Json');
+                echo json_encode($hasil_get_jadwalpribadi, TRUE);
+            } else {
+                $responsistem["status"] = "404 Data Not Found";
+                echo json_encode($responsistem);
+            }
         } else {
-            $responsistem["status"] = "404 Data Not Found";
+            $responsistem["status"] = "404 Data Not Found, Please Check Your ID and Password";
             echo json_encode($responsistem);
         }
     }
@@ -556,14 +561,13 @@ class DataJson extends CI_Controller
     function get_JadwalNgajar()
     {
         $url = "workshopelearning.com/";
-        $id_user = $this->session->userdata('ses_idlogin');
-        // $id_user = $_GET['id_user'];
-
-        if (empty($id_user)) {
-            $responsistem["status"] = "404 User Not Found";
-            echo json_encode($responsistem);
-        } else {
-            $hsl = $this->main_model->get_jadwal_ngajar($id_user);
+        // $id_user = $this->session->userdata('ses_idlogin');
+        $id_user = $_GET['id_user'];
+        $password = $_GET['password'];
+        $cekauth = $this->main_model->auth_api_user($id_user, $password);
+        if ($cekauth->num_rows() > 0) {
+            $data = $cekauth->row_array();
+            $hsl = $this->main_model->get_jadwal_ngajar($data['id_user']);
             foreach ($hsl->result() as $row) {
                 $val['kode'] = $row->kode;
                 $val['kelas'] = $row->kelas;
@@ -590,6 +594,9 @@ class DataJson extends CI_Controller
                 header('Content-Type: application/Json');
                 echo json_encode($hasil_get_jadwalngajar, TRUE);
             }
+        } else {
+            $responsistem["status"] = "404 Data Not Found, Please Check Your ID and Password";
+            echo json_encode($responsistem);
         }
     }
 
@@ -659,14 +666,13 @@ class DataJson extends CI_Controller
 
     function get_Absen()
     {
-        $id_user = $this->session->userdata('ses_idlogin');
-        // $id_user = $_GET['id_user'];
-        $data_kelas_mhs = $this->main_model->get_kelas_mhs($id_user)->result();
-
-        if (empty($id_user)) {
-            $responsistem["status"] = "404 User ID Not Found";
-            echo json_encode($responsistem);
-        } else {
+        // $id_user = $this->session->userdata('ses_idlogin');
+        $id_user = $_GET['id_user'];
+        $password = $_GET['password'];
+        $cekauth = $this->main_model->auth_api_user($id_user, $password);
+        if ($cekauth->num_rows() > 0) {
+            $data = $cekauth->row_array();
+            $data_kelas_mhs = $this->main_model->get_kelas_mhs($data['id_user'])->result();
             foreach ($data_kelas_mhs as $hasil_kelas) :
                 $sistem_instrumentasi = $hasil_kelas->sistem_instrumentasi;
                 $organisasi_komputer = $hasil_kelas->organisasi_komputer;
@@ -1569,37 +1575,40 @@ class DataJson extends CI_Controller
                     $hadir
                 );
             }
-        }
-        if (($sistem_instrumentasi) || ($organisasi_komputer) ||  ($elektronika) ||  ($sistem_digital_1) ||  ($jaringan_komputer) ||  ($sistem_digital_2) ||  ($sistem_mikroprosesor) ||  ($otomasi) ||  ($administrasi_jaringan) ||  ($sistem_pemrograman_mikroprosesor) ||  ($mobile_programing) ||  ($keamanan_jaringan) ||  ($pemrograman_python) ||  ($sistem_interface_mikrokontroler) ||  ($robotik)) {
-            $hasil = array(
-                $data_sistem_instrumentasi, $data_organisasi_komputer,
-                $data_elektronika, $data_administrasi_jaringan, $data_jaringan_komputer,
-                $data_keamanan_jaringan, $data_mobile_programing, $data_otomasi,
-                $data_pemrograman_python, $data_sistem_digital_1, $data_sistem_digital_2,
-                $data_sistem_interface_mikrokontroler, $data_sistem_mikroprosesor,
-                $data_sistem_pemrograman_mikroprosesor, $data_robotik
-            );
-            // hide output null
-            $hasil_null_array = (object) array_filter((array) $hasil);
-            $hasil_get_status_absen["Absensi Mata Kuliah"] = $hasil_null_array;
-            header('Content-Type: application/Json');
-            echo json_encode($hasil_get_status_absen, TRUE);
+
+            if (($sistem_instrumentasi) || ($organisasi_komputer) ||  ($elektronika) ||  ($sistem_digital_1) ||  ($jaringan_komputer) ||  ($sistem_digital_2) ||  ($sistem_mikroprosesor) ||  ($otomasi) ||  ($administrasi_jaringan) ||  ($sistem_pemrograman_mikroprosesor) ||  ($mobile_programing) ||  ($keamanan_jaringan) ||  ($pemrograman_python) ||  ($sistem_interface_mikrokontroler) ||  ($robotik)) {
+                $hasil = array(
+                    $data_sistem_instrumentasi, $data_organisasi_komputer,
+                    $data_elektronika, $data_administrasi_jaringan, $data_jaringan_komputer,
+                    $data_keamanan_jaringan, $data_mobile_programing, $data_otomasi,
+                    $data_pemrograman_python, $data_sistem_digital_1, $data_sistem_digital_2,
+                    $data_sistem_interface_mikrokontroler, $data_sistem_mikroprosesor,
+                    $data_sistem_pemrograman_mikroprosesor, $data_robotik
+                );
+                // hide output null
+                $hasil_null_array = (object) array_filter((array) $hasil);
+                $hasil_get_status_absen["Absensi Mata Kuliah"] = $hasil_null_array;
+                header('Content-Type: application/Json');
+                echo json_encode($hasil_get_status_absen, TRUE);
+            } else {
+                $responsistem["status"] = "404 Data Not Found";
+                echo json_encode($responsistem);
+            }
         } else {
-            $responsistem["status"] = "404 Data Not Found";
+            $responsistem["status"] = "404 Data Not Found, Please Check Your ID and Password";
             echo json_encode($responsistem);
         }
     }
 
     function get_Nilai()
     {
-        $id_user = $this->session->userdata('ses_idlogin');
-        // $id_user = $_GET['id_user'];
-        $data_kelas_mhs = $this->main_model->get_kelas_mhs($id_user)->result();
-
-        if (empty($id_user)) {
-            $responsistem["status"] = "404 User ID Not Found";
-            echo json_encode($responsistem);
-        } else {
+        // $id_user = $this->session->userdata('ses_idlogin');
+        $id_user = $_GET['id_user'];
+        $password = $_GET['password'];
+        $cekauth = $this->main_model->auth_api_user($id_user, $password);
+        if ($cekauth->num_rows() > 0) {
+            $data = $cekauth->row_array();
+            $data_kelas_mhs = $this->main_model->get_kelas_mhs($data['id_user'])->result();
             foreach ($data_kelas_mhs as $hasil_kelas) :
                 $sistem_instrumentasi = $hasil_kelas->sistem_instrumentasi;
                 $organisasi_komputer = $hasil_kelas->organisasi_komputer;
@@ -2983,25 +2992,88 @@ class DataJson extends CI_Controller
                     $tampil
                 );
             }
-            
-        }
-        if (($sistem_instrumentasi) || ($organisasi_komputer) ||  ($elektronika) ||  ($sistem_digital_1) ||  ($jaringan_komputer) ||  ($sistem_digital_2) ||  ($sistem_mikroprosesor) ||  ($otomasi) ||  ($administrasi_jaringan) ||  ($sistem_pemrograman_mikroprosesor) ||  ($mobile_programing) ||  ($keamanan_jaringan) ||  ($pemrograman_python) ||  ($sistem_interface_mikrokontroler) ||  ($robotik)) {
-            $hasil = array(
-                $data_sistem_instrumentasi, $data_organisasi_komputer,
-                $data_elektronika, $data_administrasi_jaringan, $data_jaringan_komputer,
-                $data_keamanan_jaringan, $data_mobile_programing, $data_otomasi,
-                $data_pemrograman_python, $data_sistem_digital_1, $data_sistem_digital_2,
-                $data_sistem_interface_mikrokontroler, $data_sistem_mikroprosesor,
-                $data_sistem_pemrograman_mikroprosesor, $data_robotik
-            );
-            // hide output null
-            $hasil_null_array = (object) array_filter((array) $hasil);
-            $hasil_get_nilai["Nilai Mata Kuliah"] = $hasil_null_array;
-            header('Content-Type: application/Json');
-            echo json_encode($hasil_get_nilai, TRUE);
-        } else if (empty($sistem_instrumentasi) || empty($organisasi_komputer) ||  empty($elektronika) ||  empty($sistem_digital_1) ||  empty($jaringan_komputer) ||  empty($sistem_digital_2) ||  empty($sistem_mikroprosesor) ||  empty($otomasi) ||  empty($administrasi_jaringan) ||  empty($sistem_pemrograman_mikroprosesor) ||  empty($mobile_programing) ||  empty($keamanan_jaringan) ||  empty($pemrograman_python) ||  empty($sistem_interface_mikrokontroler) ||  empty($robotik)) {
-            $responsistem["status"] = "404 Data Not Found";
+
+            if (($sistem_instrumentasi) || ($organisasi_komputer) ||  ($elektronika) ||  ($sistem_digital_1) ||  ($jaringan_komputer) ||  ($sistem_digital_2) ||  ($sistem_mikroprosesor) ||  ($otomasi) ||  ($administrasi_jaringan) ||  ($sistem_pemrograman_mikroprosesor) ||  ($mobile_programing) ||  ($keamanan_jaringan) ||  ($pemrograman_python) ||  ($sistem_interface_mikrokontroler) ||  ($robotik)) {
+                $hasil = array(
+                    $data_sistem_instrumentasi, $data_organisasi_komputer,
+                    $data_elektronika, $data_administrasi_jaringan, $data_jaringan_komputer,
+                    $data_keamanan_jaringan, $data_mobile_programing, $data_otomasi,
+                    $data_pemrograman_python, $data_sistem_digital_1, $data_sistem_digital_2,
+                    $data_sistem_interface_mikrokontroler, $data_sistem_mikroprosesor,
+                    $data_sistem_pemrograman_mikroprosesor, $data_robotik
+                );
+                // hide output null
+                $hasil_null_array = (object) array_filter((array) $hasil);
+                $hasil_get_nilai["Nilai Mata Kuliah"] = $hasil_null_array;
+                header('Content-Type: application/Json');
+                echo json_encode($hasil_get_nilai, TRUE);
+            } else if (empty($sistem_instrumentasi) || empty($organisasi_komputer) ||  empty($elektronika) ||  empty($sistem_digital_1) ||  empty($jaringan_komputer) ||  empty($sistem_digital_2) ||  empty($sistem_mikroprosesor) ||  empty($otomasi) ||  empty($administrasi_jaringan) ||  empty($sistem_pemrograman_mikroprosesor) ||  empty($mobile_programing) ||  empty($keamanan_jaringan) ||  empty($pemrograman_python) ||  empty($sistem_interface_mikrokontroler) ||  empty($robotik)) {
+                $responsistem["status"] = "404 Data Not Found";
+                echo json_encode($responsistem);
+            }
+        } else {
+            $responsistem["status"] = "404 Data Not Found, Please Check Your ID and Password";
             echo json_encode($responsistem);
+        }
+    }
+
+    function post_Temporary()
+    {
+        date_default_timezone_get('Asia/Jakarta');
+        $date = date("Y-m-d H:i:s");
+        if (isset($_POST['id_user']) && isset($_POST['kode']) && isset($_POST['pertemuan'])) {
+            $id_user = $_POST['id_user'];
+            $kode = $_POST['kode'];
+            $pertemuan = $_POST['pertemuan'];
+            $sql = $this->main_model->get_kelas_matkul($kode)->result_array();
+            $mulai_praktikum = $sql[0]['mulai_praktikum'];
+            $awal = strtotime($mulai_praktikum);
+            $akhir = strtotime($date);
+            $diff = $akhir - $awal;
+
+            $jam = floor($diff / (60 * 60));
+            $data_menit = $diff - $jam * (60 * 60);
+            $menit = floor($data_menit / 60);
+            $detik = $diff % 60;
+
+            $total_waktu = $jam . ":" . $menit . ":" . $detik;
+            $cek_temp = $this->main_model->cek_temp($id_user, $kode, $pertemuan);
+            if ($cek_temp->num_rows() > 0) {
+                $kirimdata["error"] = "true";
+                $kirimdata["data"] = "data sudah ada";
+                echo json_encode($kirimdata);
+                header("Content-Type: Application/Json");
+            } else {
+                $kirimdata["id_user"] = $id_user;
+                $kirimdata["kode"] = $kode;
+                $kirimdata["pertemuan"] = $pertemuan;
+                $kirimdata["jam_scan"] = $date;
+                $kirimdata["telat"] = $total_waktu;
+                $kirimdata["status"] = '1';
+                $post_temp = $this->main_model->insert_temp($kirimdata);
+                echo json_encode($post_temp);
+                header("Content-Type: Application/Json");
+                if ($post_temp == true) {
+                    $get_temp = $this->main_model->cek_temp($id_user, $kode, $pertemuan)->row_array();
+                    $hsl["id_user"] = $get_temp["id_user"];
+                    $hsl["kode"] = $get_temp["kode"];
+                    $hsl["pertemuan"] = $get_temp["pertemuan"];
+                    $hsl["jam_scan"] = date("H:i:s", strtotime($get_temp["jam_scan"]));
+                    $hsl["telat"] = $get_temp["telat"];
+                    $hsl["status"] = $get_temp["status"];
+                    // if ($get_temp["status"] == '0'){
+                    // $hsl["status"] = "pending";
+                    // } else {
+                    // $hsl["status"] = "hadir";
+                    // }
+                    echo json_encode($hsl);
+                    header("Content-Type: Application/Json");
+                } else {
+                    $kirimdata["error"] = "true";
+                    echo json_encode($kirimdata);
+                    header("Content-Type: Application/Json");
+                }
+            }
         }
     }
 }
