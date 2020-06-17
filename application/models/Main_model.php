@@ -743,6 +743,11 @@ class Main_model extends CI_Model{
       }
 
       //JSON
+      function auth_api_user($id_user,$password){
+        $query=$this->db->query("SELECT * FROM tbl_user WHERE password=MD5('$password') AND status='1' AND id_user='$id_user' LIMIT 1");
+        return $query;
+      }
+
       function get_detail_user($id_user){
         $query=$this->db->query("SELECT a.id_user, a.npm, a.nama, a.username, a.password, a.gambar, b.tempat, b.tgl_lahir, b.agama, b.email, b.telp, b.alamat FROM tbl_user AS a INNER JOIN tbl_biodata_user AS b ON a.id_user=b.id_user WHERE a.id_user='$id_user'");
         return $query;      
@@ -768,5 +773,20 @@ class Main_model extends CI_Model{
         $query = $this->db->query("SELECT a.kelas, a.hari, a.mulai_praktikum, a.selesai_praktikum FROM tbl_kelas_matkul AS a  WHERE lab = '0' AND hari = '$hari' ");
         // $query = $this->db->query("SELECT * FROM tbl_kelas_matkul WHERE lab = '1' AND hari = '$hari' ");
         return $query;
+      }
+
+      // absen temporary
+      function cek_temp($id_user,$kode,$pertemuan){
+        $query = $this->db->query("SELECT * FROM tbl_temporary WHERE id_user='$id_user' && kode='$kode' && pertemuan='$pertemuan'");
+        return $query;
+      }
+
+      function insert_temp($kirimdata){
+        $query = $this->db->insert('tbl_temporary', $kirimdata);
+        if($query){
+          return true;
+        } else {
+          return false;
+        }
       }
 }
