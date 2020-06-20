@@ -20,20 +20,14 @@ class DataJson extends CI_Controller
 
         $cekauth = $this->login_model->auth_user($username, $password);
         if ($cekauth->num_rows() > 0) {
-            // $hasil_data = array();
-            // $hasil_data["hasil"] = array();
-            // $hasil_data["status"] = "true";
+            $hasil_data = array();
+            $hasil_data["hasil"] = array();
+            $hasil_data["status"] = "true";
             $data = $cekauth->row_array();
             $biodatalengkapuser = $this->login_model->select_biodata_user($data['id_user']);
             foreach ($biodatalengkapuser as $hasil) {
                 $email = $hasil->email;
             }
-            $this->session->set_userdata('ses_idlogin', $data['id_user']);
-            $this->session->set_userdata('ses_name', $data['nama']);
-            $this->session->set_userdata('ses_username', $data['username']);
-            $this->session->set_userdata('ses_email', $email);
-            $this->session->set_userdata('ses_foto', $data['gambar']);
-            $this->session->set_userdata('ses_level', $data['akses']);
 
             $value = $this->main_model->get_detail_user($data['id_user'])->row_array();
             $hsl['id_user'] = $value["id_user"];
@@ -76,14 +70,14 @@ class DataJson extends CI_Controller
             } else {
                 $hsl['alamat'] = $value['alamat'];
             }
-            $hasil_data["hasil login"] = $hsl;
+            $hasil_data["hasil"] []= $hsl;
             // hide output null
-            $hasil_get_login = (object) array_filter((array) $hasil_data);
+            // $hasil_get_login = (object) array_filter((array) $hasil_data);
             header('Content-Type: application/Json');
-            echo json_encode($hasil_get_login, TRUE);
+            echo json_encode($hasil_data, TRUE);
         } else {
-            $responsistem["status"] = "404 User Not Found";
-            echo json_encode($responsistem);
+            $hasil_data["status"] = "404 User Not Found";
+            echo json_encode($hasil_data);
         }
     }
 
@@ -151,7 +145,6 @@ class DataJson extends CI_Controller
 
     function get_JadwalPribadi()
     {
-        // $id_user = $this->session->userdata('ses_idlogin');
         $id_user = $_GET['id_user'];
         $password = $_GET['password'];
         $cekauth = $this->main_model->auth_api_user($id_user, $password);
@@ -407,13 +400,15 @@ class DataJson extends CI_Controller
                     $ddi = "Lab. Dasar-Dasar Instrumentasi";
                 }
 
-                $data_sistem_pemrograman_mikroprosesor = array(
+                $data_array = array(
                     $kelas = $matkul[0]['kelas'],
                     $jadwal = $matkul[0]['hari'] . " - " . $matkul[0]['mulai_praktikum'] . " s/d " . $matkul[0]['selesai_praktikum'],
                     $asd1->nama,
                     $asd2->nama,
                     $ddi
                 );
+
+                $data_sistem_pemrograman_mikroprosesor = (object) $data_array;
             }
 
             if (!empty($mobile_programing)) {
@@ -431,13 +426,14 @@ class DataJson extends CI_Controller
                     $ddi = "Lab. Dasar-Dasar Instrumentasi";
                 }
 
-                $data_mobile_programing = array(
+                $data_array = array(
                     $kelas = $matkul[0]['kelas'],
                     $jadwal = $matkul[0]['hari'] . " - " . $matkul[0]['mulai_praktikum'] . " s/d " . $matkul[0]['selesai_praktikum'],
                     $asd1->nama,
                     $asd2->nama,
                     $ddi
                 );
+                $data_mobile_programing = (object) $data_array;
             }
             if (!empty($keamanan_jaringan)) {
                 $matkul = $this->main_model->get_kelas_matkulBYKODE($keamanan_jaringan)->result_array();
@@ -479,13 +475,14 @@ class DataJson extends CI_Controller
                     $ddi = "Lab. Dasar-Dasar Instrumentasi";
                 }
 
-                $data_pemrograman_python = array(
+                $data_array = array(
                     $kelas = $matkul[0]['kelas'],
                     $jadwal = $matkul[0]['hari'] . " - " . $matkul[0]['mulai_praktikum'] . " s/d " . $matkul[0]['selesai_praktikum'],
                     $asd1->nama,
                     $asd2->nama,
                     $orkom
                 );
+                $data_pemrograman_python = (object) $data_array;
             }
             if (!empty($sistem_interface_mikrokontroler)) {
                 $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_interface_mikrokontroler)->result_array();
@@ -534,23 +531,24 @@ class DataJson extends CI_Controller
                 );
             }
             if (($sistem_instrumentasi) || ($organisasi_komputer) ||  ($elektronika) ||  ($sistem_digital_1) ||  ($jaringan_komputer) ||  ($sistem_digital_2) ||  ($sistem_mikroprosesor) ||  ($otomasi) ||  ($administrasi_jaringan) ||  ($sistem_pemrograman_mikroprosesor) ||  ($mobile_programing) ||  ($keamanan_jaringan) ||  ($pemrograman_python) ||  ($sistem_interface_mikrokontroler) ||  ($robotik)) {
-                $hasil = array(
+                $hasil = array();
+                $hasil["hasil jadwal pribadi"] = array();
+                $hsl = array(
                     $data_sistem_instrumentasi, $data_organisasi_komputer,
                     $data_elektronika, $data_administrasi_jaringan, $data_jaringan_komputer,
                     $data_keamanan_jaringan, $data_mobile_programing, $data_otomasi,
                     $data_pemrograman_python, $data_sistem_digital_1, $data_sistem_digital_2,
                     $data_sistem_interface_mikrokontroler, $data_sistem_mikroprosesor,
                     $data_sistem_pemrograman_mikroprosesor, $data_robotik
-
                 );
                 // hide output null
-                $hasil_null_array = (object) array_filter((array) $hasil);
-                $hasil_get_jadwalpribadi["hasil jadwal pribadi"] = $hasil_null_array;
+                $hasil = array_filter((array) $hsl);
+                $hasil_jadwal["hasil_jadwal_pribadi"] []= $hasil;
                 header('Content-Type: application/Json');
-                echo json_encode($hasil_get_jadwalpribadi, TRUE);
+                echo json_encode($hasil_jadwal, TRUE);
             } else {
-                $responsistem["status"] = "404 Data Not Found";
-                echo json_encode($responsistem);
+                $hasil_jadwal["status"] = "404 Data Not Found";
+                echo json_encode($hasil_jadwal);
             }
         } else {
             $responsistem["status"] = "404 Data Not Found, Please Check Your ID and Password";
@@ -560,12 +558,11 @@ class DataJson extends CI_Controller
 
     function get_JadwalNgajar()
     {
-        $url = "workshopelearning.com/";
-        // $id_user = $this->session->userdata('ses_idlogin');
         $id_user = $_GET['id_user'];
         $password = $_GET['password'];
         $cekauth = $this->main_model->auth_api_user($id_user, $password);
         if ($cekauth->num_rows() > 0) {
+            
             $data = $cekauth->row_array();
             $hsl = $this->main_model->get_jadwal_ngajar($data['id_user']);
             foreach ($hsl->result() as $row) {
@@ -589,11 +586,13 @@ class DataJson extends CI_Controller
                     $val['image'] = "http://workshopelearning.com/assets/images/imgqrcode/absen/" . $gbr['qrcode'];
                 }
 
-                $hasil["hasil jadwal ngajar"] = $val;
-                $hasil_get_jadwalngajar = (object) array_filter((array) $hasil);
+                $hsl = array($val);
+                // $hasil = array_filter((array) $hsl);
+                array_push($hasil_data["hasil_jadwal_ngajar"]= $hsl);
+                echo json_encode($hasil_data, TRUE);
                 header('Content-Type: application/Json');
-                echo json_encode($hasil_get_jadwalngajar, TRUE);
             }
+            
         } else {
             $responsistem["status"] = "404 Data Not Found, Please Check Your ID and Password";
             echo json_encode($responsistem);
@@ -3049,7 +3048,7 @@ class DataJson extends CI_Controller
                 $kirimdata["pertemuan"] = $pertemuan;
                 $kirimdata["jam_scan"] = $date;
                 $kirimdata["telat"] = $total_waktu;
-                $kirimdata["status"] = '1';
+                $kirimdata["status"] = '0';
                 $post_temp = $this->main_model->insert_temp($kirimdata);
                 echo json_encode($post_temp);
                 header("Content-Type: Application/Json");

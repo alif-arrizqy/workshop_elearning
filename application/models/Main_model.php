@@ -789,4 +789,30 @@ class Main_model extends CI_Model{
           return false;
         }
       }
+
+      // Approve Absen
+      function get_all_temp_absen_mhs($id_kelas_matkul,$kode){
+        // $query=$this->db->query("SELECT a.*,b.*,c.*,d.* FROM tbl_kelas_matkul AS a INNER JOIN tbl_temporary AS b ON a.kode=b.kode INNER JOIN tbl_user AS c ON c.id_user=b.id_user INNER JOIN tbl_kelas_mhs AS d ON d.id_user=b.id_user WHERE a.id_kelas_matkul='$id_kelas_matkul' AND (d.sistem_instrumentasi='$kode' OR d.organisasi_komputer='$kode' OR d.elektronika='$kode' OR d.sistem_digital_1='$kode' OR d.jaringan_komputer='$kode' OR d.sistem_digital_2='$kode' OR d.sistem_mikroprosesor='$kode' OR d.otomasi='$kode' OR d.administrasi_jaringan='$kode' OR d.sistem_pemrograman_mikroprosesor='$kode' OR d.mobile_programing='$kode' OR d.keamanan_jaringan='$kode' OR d.pemrograman_python='$kode' OR d.sistem_interface_mikrokontroler='$kode' OR d.robotik='$kode') ORDER BY c.npm ASC");
+        $query=$this->db->query("SELECT a.id_kelas_matkul, a.id_matkul, a.kode, a.kelas, 
+        b.id_user, b.kode, b.pertemuan, b.jam_scan, b.telat, b.status, 
+        c.id_user, c.npm, c.nama, 
+        d.* FROM tbl_kelas_matkul AS a INNER JOIN tbl_temporary AS b ON a.kode=b.kode INNER JOIN tbl_user AS c ON c.id_user=b.id_user 
+        INNER JOIN tbl_kelas_mhs AS d ON d.id_user=b.id_user 
+        WHERE a.id_kelas_matkul='$id_kelas_matkul' AND (d.sistem_instrumentasi='$kode' OR d.organisasi_komputer='$kode' OR d.elektronika='$kode' 
+        OR d.sistem_digital_1='$kode' OR d.jaringan_komputer='$kode' OR d.sistem_digital_2='$kode' OR d.sistem_mikroprosesor='$kode' OR d.otomasi='$kode' 
+        OR d.administrasi_jaringan='$kode' OR d.sistem_pemrograman_mikroprosesor='$kode' OR d.mobile_programing='$kode' OR d.keamanan_jaringan='$kode' 
+        OR d.pemrograman_python='$kode' OR d.sistem_interface_mikrokontroler='$kode' OR d.robotik='$kode') ORDER BY c.npm ASC");
+        return $query;
+      }
+
+      function get_all_temp_absenBY($id_user){
+        $query=$this->db->query("SELECT * FROM tbl_temporary WHERE id_user='$id_user'");
+        return $query;
+      }
+
+      function update_temp($id_user, $kode, $pertemuan){
+        $query = $this->db->update("UPDATE tbl_temporary set status='1' where id_user='$id_user' && kode='$kode' && pertemuan = '$pertemuan'");
+        return $query;
+      }
+
 }

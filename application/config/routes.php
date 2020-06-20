@@ -102,6 +102,10 @@ $route['v_nilai_user'] = 'User/v_nilai_user';
 $route['v_nilai'] = 'User/v_nilai';
 $route['edit_nilai'] = 'User/edit_nilai';
 $route['cetak_nilai'] = 'User/cetak_nilai';
+// Approve Absen
+$route['v_approve_absen'] = 'User/v_approve_absen';
+$route['approve_absen_kelas/(:num)/(:any)'] = 'User/approve_absen_kelas/$1/$2';
+$route['all_approve_absen_pilihan'] = 'User/all_approve_absen_pilihan';
 
 
 	//tabel administrator
@@ -191,16 +195,20 @@ $route['cetak_nilai'] = 'User/cetak_nilai';
 	$route['cetak_nilai/(:num)/(:any)'] = 'Main/cetak_nilai/$1/$2';
 
 //API JSON
-$route['LoginApi'] = 'api/DataJson/get_login';
+// $route['LoginApi'] = 'api/DataJson/get_login';
+$route['LoginApi'] = 'api/JsonLogin';
 $route['UserApi'] = 'api/DataJson/get_user';
-$route['JadwalPribadiApi'] = 'api/DataJson/get_JadwalPribadi';
-$route['JadwalNgajarApi'] = 'api/DataJson/get_JadwalNgajar';
+// $route['JadwalPribadiApi'] = 'api/DataJson/get_JadwalPribadi';
+$route['JadwalPribadiApi'] = 'api/JsonJadwalPribadi';
+// $route['JadwalNgajarApi'] = 'api/DataJson/get_JadwalNgajar';
+$route['JadwalNgajarApi'] = 'api/JsonJadwalNgajar';
 $route['JadwalOrkomApi'] = 'api/DataJson/get_JadwalOrkom';
 $route['JadwalDDIApi'] = 'api/DataJson/get_JadwalDDI';
 $route['AbsenApi'] = 'api/DataJson/get_Absen';
 $route['NilaiApi'] = 'api/DataJson/get_Nilai';
+$route['PostTempApi'] = 'api/DataJson/post_Temporary';
 
-// $route['default_controller'] = 'LoginDashboard/loginelearningUser';
-$route['default_controller'] = 'LoginDashboard';
+$route['default_controller'] = 'LoginDashboard/loginelearningUser';
+// $route['default_controller'] = 'LoginDashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -726,13 +726,61 @@ class User extends CI_Controller
 		$this->load->view('user/proses_data/nilai/cetak_nilai', $data);
 	}
 
-	// function detail_matkul(){
-	// 	$data = array(
-	// 		'detail_matkul' => $this->main_model->get_all_qrcode()->result(),
-	// 	);
-	// 	$this->load->view('admin/kelengkapan/header');
-	// 	$this->load->view('admin/master_data/qrcode/v_qrcode', $data);
-	// 	$this->load->view('admin/kelengkapan/footer');
-	// }
+	function v_approve_absen()
+	{
+		$id_user = $this->session->userdata('ses_idlogin');
+		$data = array(
+			'data_kelas_matkul' => $this->main_model->get_kelas_matkulBy($id_user),
+		);
+		$this->load->view('user/kelengkapan/header');
+		$this->load->view('user/proses_data/approve_absen/v_approve_absen', $data);
+		$this->load->view('user/kelengkapan/footer');
+	}
+
+	function approve_absen($id_kelas_matkul, $kode)
+	{
+		$data = array(
+			'data_approve_absen' => $this->main_model->get_all_temp_absen_mhs($id_kelas_matkul, $kode),
+		);
+		$this->load->view('user/kelengkapan/header');
+		$this->load->view('user/proses_data/approve_absen/v_approve', $data);
+		$this->load->view('user/kelengkapan/footer');
+	}
+
+	function all_approve_absen_pilihan()
+	{
+		$id_user = $this->input->post('pilih');
+		$jumlah_dipilih = count($id_user);
+		for ($i = 0; $i < $jumlah_dipilih; $i++) {
+			$hsl = $this->main_model->get_all_temp_absenBY($id_user[$i])->result_array();
+			$id_user = $hsl[0]['id_user'];
+			$kode = $hsl[0]['kode'];
+			$id_kelas_matkul = $this->main_model->get_kelas_matkul($kode);
+			$pertemuan = $hsl[0]['pertemuan'];
+			if ($pertemuan == 1) {
+				$pertemuan = 1;
+			} else if ($pertemuan == 2) {
+				$pertemuan = 2;
+			}
+			$absen['a_1'] = $pertemuan;
+			$absen['a_2'] = $pertemuan;
+			$kirimdata = array(
+				$absen
+			);
+			// $this->main_model->update_temp($id_user, $kode, $pertemuan);
+			$success = $this->main_model->update_absensi($kirimdata, $id_kelas_matkul, $id_user);
+
+
+			if ($success) {
+				$this->session->set_flashdata('sukses', 'Data berhasil disimpan !!! Terimakasih ..');
+				redirect('approve_absen_kelas/' . $id_kelas_matkul . "/" . $kode);
+			} else {
+				$this->session->set_flashdata('gagal', 'Data gagal disimpan !!! Terimakasih ..');
+				redirect('approve_absen_kelas/' . $id_kelas_matkul . "/" . $kode);
+			}
+		}
+	}
+
+
 
 }
