@@ -16,7 +16,7 @@ class LoginDashboard extends CI_Controller
 		// $this->load->view('admin/awal');
 		$this->load->view('under_contruction');
 	}
-	
+
 	function loginelearning()
 	{
 		if ($this->session->userdata('masuk') != TRUE) {
@@ -91,8 +91,6 @@ class LoginDashboard extends CI_Controller
 					$sbg = "Super Admin";
 				} else if ($level == 2) {
 					$sbg = "Operator";
-				} else if ($level == 3) {
-					$sbg = "Tamu";
 				}
 				$this->session->set_flashdata('msg', 'Selamat Datang ' . $nama . ' di Panel Elearning Workshop sebagai ' . $sbg . ' !!!');
 				redirect('workshopadministrator');
@@ -220,8 +218,8 @@ class LoginDashboard extends CI_Controller
 					$sbg = "Asisten Praktikum / Mahasiswa";
 				} else if ($level == 4) {
 					$sbg = "Alumin / Umum";
-				}				
-				if (empty($email)){
+				}
+				if (empty($email)) {
 					$this->load->view('user/modal');
 					// $this->session->set_flashdata('msg', 'Jangan Lupa Untuk Menambahkan Email Yang Aktif Anda Gunakan Sekarang !!');  
 					redirect('dashboard_user');
@@ -305,16 +303,17 @@ class LoginDashboard extends CI_Controller
 		} else {
 			$this->session->set_flashdata('msg', 'Email Tidak Terdaftar !!');
 			redirect('lupapassUser');
-		} 
+		}
 	}
 
-	function ubah_pass(){
+	function ubah_pass()
+	{
 		$id_user = $this->session->userdata('ses_idlogin');
 		$data = array(
 			'data_user' => $this->main_model->detail_user($id_user)->result(),
 			'data_kelas_mhs' => $this->main_model->get_kelas_mhs($id_user)->result(),
-  	  		'data_kelas_matkul' => $this->main_model->get_kelas_matkulBy($id_user),
-	  );
+			'data_kelas_matkul' => $this->main_model->get_kelas_matkulBy($id_user),
+		);
 		$this->load->view('user/ubah_pass', $data);
 	}
 
@@ -331,5 +330,10 @@ class LoginDashboard extends CI_Controller
 			$this->session->set_flashdata('gagal', 'Data gagal diubah !!! Terimakasih ..');
 			redirect('ubah_pass');
 		}
+	}
+
+	function delete_approve()
+	{
+		$this->main_model->delete_approve();
 	}
 }

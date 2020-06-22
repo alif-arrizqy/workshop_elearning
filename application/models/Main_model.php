@@ -811,8 +811,26 @@ class Main_model extends CI_Model{
       }
 
       function update_temp($id_user, $kode, $pertemuan){
-        $query = $this->db->update("UPDATE tbl_temporary set status='1' where id_user='$id_user' && kode='$kode' && pertemuan = '$pertemuan'");
+        $this->db->set('status', 1);
+        $this->db->where('id_user', $id_user);
+        $this->db->where('kode', $kode);
+        $this->db->where('pertemuan', $pertemuan);
+        $query = $this->db->update('tbl_temporary');
+        if($query){
+            return true;
+        }else{
+            return false;
+        }
+      }
+
+      function count_total_mhs($kode){
+        $query = $this->db->query("SELECT * FROM tbl_temporary WHERE kode='$kode'");
         return $query;
+      }
+
+      function delete_approve()
+      {
+          $this->db->empty_table('tbl_temporary');
       }
 
 }

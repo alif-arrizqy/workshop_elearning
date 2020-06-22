@@ -69,7 +69,7 @@
               <div class="clearfix"></div>
 
               <div class="separator">
-                <?= constant("SARAN");?>
+                <!-- <?= constant("SARAN");?> -->
                 <div class="clearfix"></div>
                 <br />
 

@@ -20,13 +20,16 @@
                         <div class="x_content">
                             <?php if ($data_kelas_matkul->num_rows() > 0) { ?>
                                 <?php foreach ($data_kelas_matkul->result() as $hasil_matkul) {
-                                    $data_mhs = $this->main_model->get_all_data_mhs($hasil_matkul->kode); ?>
+                                    // $id_user = $hasil_matkul->id_user;
+                                    $kode = $hasil_matkul->kode;
+                                    $data_mhs = $this->main_model->get_all_data_mhs($kode);
+                                    $totalmhs = $this->main_model->count_total_mhs($kode); ?>
                                     <a href="<?= base_url('user/approve_absen/' . $hasil_matkul->id_kelas_matkul . "/" . $hasil_matkul->kode) ?>">
                                         <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                             <div class="tile-stats">
                                                 <div class="icon"><i class="fa fa-folder"></i>
                                                 </div>
-                                                <div class="count"><?= $data_mhs->num_rows() ?></div>
+                                                <div class="count"> <?= $totalmhs->num_rows() ?> dari <?= $data_mhs->num_rows() ?></div>
                                                 <h4 style="color: black;margin-left: 10px;font-weight: bold;"><?= $hasil_matkul->kelas; ?></h4>
                                                 <h4 style="color: black;margin-left: 10px; font-size:14px;"><?= $hasil_matkul->hari . " - " . $hasil_matkul->mulai_praktikum . " s/d " . $hasil_matkul->selesai_praktikum; ?></h4>
                                                 <?php

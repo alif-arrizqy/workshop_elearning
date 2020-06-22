@@ -106,6 +106,7 @@ $route['cetak_nilai'] = 'User/cetak_nilai';
 $route['v_approve_absen'] = 'User/v_approve_absen';
 $route['approve_absen_kelas/(:num)/(:any)'] = 'User/approve_absen_kelas/$1/$2';
 $route['all_approve_absen_pilihan'] = 'User/all_approve_absen_pilihan';
+$route['delete_approve'] = 'LoginDashboard/delete_approve';
 
 
 	//tabel administrator
@@ -204,8 +205,10 @@ $route['JadwalPribadiApi'] = 'api/JsonJadwalPribadi';
 $route['JadwalNgajarApi'] = 'api/JsonJadwalNgajar';
 $route['JadwalOrkomApi'] = 'api/DataJson/get_JadwalOrkom';
 $route['JadwalDDIApi'] = 'api/DataJson/get_JadwalDDI';
-$route['AbsenApi'] = 'api/DataJson/get_Absen';
+// $route['AbsenApi'] = 'api/DataJson/get_Absen';
+$route['AbsenApi'] = 'api/JsonAbsen';
 $route['NilaiApi'] = 'api/DataJson/get_Nilai';
+// $route['NilaiApi'] = 'api/JsonNilai';
 $route['PostTempApi'] = 'api/DataJson/post_Temporary';
 
 $route['default_controller'] = 'LoginDashboard/loginelearningUser';
