@@ -81,14 +81,12 @@ class JsonLogin extends REST_Controller
                     $hsl['alamat'] = $value->alamat;
                 }
             }
-            $hasil = array($hsl);
+            // $hasil = array($hsl);
 
             // hide output null
-            // $hasil = (object) array_filter((array) $hasil);
             $this->response([
                 'status' => TRUE,
-                'data' => $hasil
-                // 'message' => 'Login Success'
+                'data' => $hsl
             ], REST_Controller::HTTP_OK);
         } else {
             $this->response([
