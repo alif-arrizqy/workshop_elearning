@@ -48,45 +48,50 @@ class JsonJadwalPribadi extends REST_Controller
             endforeach;
 
             #################################################### Sistem Instrumentasi ####################################################
-            $matkul_si = $this->main_model->get_kelas_matkulBYKODE($sistem_instrumentasi)->result_array();
-            $asdos1_si = $this->main_model->get_asdos1_iduser($matkul_si[0]['asdos_1'])->result();
-            $asdos2_si = $this->main_model->get_asdos1_iduser($matkul_si[0]['asdos_2'])->result();
-            foreach ($asdos1_si as $asd1_si) {
-            }
-            foreach ($asdos2_si as $asd2_si) {
-            }
-            $data1['kelas'] = $matkul_si[0]['kelas'];
-            $data1['hari'] = $matkul_si[0]['hari'];
-            $data1['jam_mulai'] = $matkul_si[0]['mulai_praktikum'];
-            $data1['jam_selesai'] = $matkul_si[0]['selesai_praktikum'];
-            $data1['asd1'] = $asd1_si->nama;
-            $data1['asd2'] = $asd2_si->nama;
-            // if ($matkul_si[0]['lab'] == 1) {
-            //     $data1['lab'] = "Lab. Organisasi Komputer";
-            // } else if ($matkul_si[0]['lab'] == 0) {
-            //     $data1['lab'] = "Lab. Dasar-Dasar Instrumentasi";
+            // if (!empty($sistem_instrumentasi)) {
+                $matkul_si = $this->main_model->get_kelas_matkulBYKODE($sistem_instrumentasi)->result_array();
+                $asdos1_si = $this->main_model->get_asdos1_iduser($matkul_si[0]['asdos_1'])->result();
+                $asdos2_si = $this->main_model->get_asdos1_iduser($matkul_si[0]['asdos_2'])->result();
+                foreach ($asdos1_si as $asd1_si) {
+                }
+                foreach ($asdos2_si as $asd2_si) {
+                }
+                // $data_si = array(
+                    $data1['kelas'] = $matkul_si[0]['kelas'];
+                    $data1['hari'] = $matkul_si[0]['hari'];
+                    $data1['jam_mulai'] = $matkul_si[0]['mulai_praktikum'];
+                    $data1['jam_selesai'] = $matkul_si[0]['selesai_praktikum'];
+                    $data1['asd1'] = $asd1_si->nama;
+                    $data1['asd2'] = $asd2_si->nama;
+                // );
+                // if ($matkul_si[0]['lab'] == 1) {
+                //     $data1['lab'] = "Lab. Organisasi Komputer";
+                // } else if ($matkul_si[0]['lab'] == 0) {
+                //     $data1['lab'] = "Lab. Dasar-Dasar Instrumentasi";
             // }
 
             #################################################### Organisasi Komputer ####################################################
-            $matkul_ork = $this->main_model->get_kelas_matkulBYKODE($organisasi_komputer)->result_array();
-            $asdos1_ork = $this->main_model->get_asdos1_iduser($matkul_ork[0]['asdos_1'])->result();
-            $asdos2_ork = $this->main_model->get_asdos1_iduser($matkul_ork[0]['asdos_2'])->result();
-            foreach ($asdos1_ork as $asd1_ork) {
-            }
-            foreach ($asdos2_ork as $asd2_ork) {
-            }
-
-            $data2['kelas'] = $matkul_ork[0]['kelas'];
-            $data2['hari'] = $matkul_ork[0]['hari'];
-            $data2['jam_mulai'] = $matkul_ork[0]['mulai_praktikum'];
-            $data2['jam_selesai'] = $matkul_ork[0]['selesai_praktikum'];
-            $data2['asd1'] = $asd1_ork->nama;
-            $data2['asd2'] = $asd2_ork->nama;
-            // if ($matkul_ork[0]['lab'] == 1) {
-            //     $data2['lab'] = "Lab. Organisasi Komputer";
-            // }
-            // if ($matkul_ork[0]['lab'] == 0) {
-            //     $data2['lab'] = "Lab. Dasar-Dasar Instrumentasi";
+            // if (!empty($organisasi_komputer)) {
+                $matkul_ork = $this->main_model->get_kelas_matkulBYKODE($organisasi_komputer)->result_array();
+                $asdos1_ork = $this->main_model->get_asdos1_iduser($matkul_ork[0]['asdos_1'])->result();
+                $asdos2_ork = $this->main_model->get_asdos1_iduser($matkul_ork[0]['asdos_2'])->result();
+                foreach ($asdos1_ork as $asd1_ork) {
+                }
+                foreach ($asdos2_ork as $asd2_ork) {
+                }
+                // $data_orkom = array(
+                    $data2['kelas'] = $matkul_ork[0]['kelas'];
+                    $data2['hari'] = $matkul_ork[0]['hari'];
+                    $data2['jam_mulai'] = $matkul_ork[0]['mulai_praktikum'];
+                    $data2['jam_selesai'] = $matkul_ork[0]['selesai_praktikum'];
+                    $data2['asd1'] = $asd1_ork->nama;
+                    $data2['asd2'] = $asd2_ork->nama;
+                // );
+                // if ($matkul_ork[0]['lab'] == 1) {
+                //     $data2['lab'] = "Lab. Organisasi Komputer";
+                // }
+                // if ($matkul_ork[0]['lab'] == 0) {
+                //     $data2['lab'] = "Lab. Dasar-Dasar Instrumentasi";
             // }
 
             #################################################### Elektronika ####################################################
@@ -288,6 +293,7 @@ class JsonJadwalPribadi extends REST_Controller
             // }
 
             #################################################### Pemrograman Python ####################################################
+            
             $matkul_python = $this->main_model->get_kelas_matkulBYKODE($pemrograman_python)->result_array();
             $asdos1_python = $this->main_model->get_asdos1_iduser($matkul_python[0]['asdos_1'])->result();
             $asdos2_python = $this->main_model->get_asdos1_iduser($matkul_python[0]['asdos_2'])->result();
@@ -309,6 +315,7 @@ class JsonJadwalPribadi extends REST_Controller
             // }
 
             #################################################### Keamanan Jaringan ####################################################
+            if(!empty($keamanan_jaringan)){
             $matkul_kejar = $this->main_model->get_kelas_matkulBYKODE($keamanan_jaringan)->result_array();
             $asdos1_kejar = $this->main_model->get_asdos1_iduser($matkul_kejar[0]['asdos_1'])->result();
             $asdos2_kejar = $this->main_model->get_asdos1_iduser($matkul_kejar[0]['asdos_2'])->result();
@@ -316,20 +323,23 @@ class JsonJadwalPribadi extends REST_Controller
             }
             foreach ($asdos2_kejar as $asd2_kejar) {
             }
-            $data13['kelas'] = $matkul_kejar[0]['kelas'];
-            $data13['hari'] = $matkul_kejar[0]['hari'];
-            $data13['jam_mulai'] = $matkul_kejar[0]['mulai_praktikum'];
-            $data13['jam_selesai'] = $matkul_kejar[0]['selesai_praktikum'];
-            $data13['asd1'] = $asd1_kejar->nama;
-            $data13['asd2'] = $asd2_kejar->nama;
+            $data_kejar = array(
+            $data13['kelas'] = $matkul_kejar[0]['kelas'],
+            $data13['hari'] = $matkul_kejar[0]['hari'],
+            $data13['jam_mulai'] = $matkul_kejar[0]['mulai_praktikum'],
+            $data13['jam_selesai'] = $matkul_kejar[0]['selesai_praktikum'],
+            $data13['asd1'] = $asd1_kejar->nama,
+            $data13['asd2'] = $asd2_kejar->nama,
+        );
             // if ($matkul_kejar[0]['lab'] == 1) {
             //     $data13['lab'] = "Lab. Organisasi Komputer";
             // }
             // if ($matkul_kejar[0]['lab'] == 0) {
             //     $data13['lab'] = "Lab. Dasar-Dasar Instrumentasi";
-            // }
+            }
 
             #################################################### Sistem Interface Mikrokontroler ####################################################
+            if(!empty($sistem_interface_mikrokontroler)){
             $matkul_sim = $this->main_model->get_kelas_matkulBYKODE($sistem_interface_mikrokontroler)->result_array();
             $asdos1_sim = $this->main_model->get_asdos1_iduser($matkul_sim[0]['asdos_1'])->result();
             $asdos2_sim = $this->main_model->get_asdos1_iduser($matkul_sim[0]['asdos_2'])->result();
@@ -337,20 +347,25 @@ class JsonJadwalPribadi extends REST_Controller
             }
             foreach ($asdos2_sim as $asd2_sim) {
             }
+            // $data_sim = array(
             $data14['kelas'] = $matkul_sim[0]['kelas'];
             $data14['hari'] = $matkul_sim[0]['hari'];
             $data14['jam_mulai'] = $matkul_sim[0]['mulai_praktikum'];
             $data14['jam_selesai'] = $matkul_sim[0]['selesai_praktikum'];
             $data14['asd1'] = $asd1_sim->nama;
             $data14['asd2'] = $asd2_sim->nama;
+        // );
             // if ($matkul_sim[0]['lab'] == 1) {
             //     $data14['lab'] = "Lab. Organisasi Komputer";
             // }
             // if ($matkul_sim[0]['lab'] == 0) {
             //     $data14['lab'] = "Lab. Dasar-Dasar Instrumentasi";
-            // }
+            } else {
+                $responsistem["jadwal_pribadi"];
+            }
 
             #################################################### Robotik ####################################################
+            if(!empty($robotik)){
             $matkul_robot = $this->main_model->get_kelas_matkulBYKODE($robotik)->result_array();
             $asdos1_robot = $this->main_model->get_asdos1_iduser($matkul_robot[0]['asdos_1'])->result();
             $asdos2_robot = $this->main_model->get_asdos1_iduser($matkul_robot[0]['asdos_2'])->result();
@@ -358,19 +373,26 @@ class JsonJadwalPribadi extends REST_Controller
             }
             foreach ($asdos2_robot as $asd2_robot) {
             }
+            // $data_robotik = array(
             $data15['kelas'] = $matkul_robot[0]['kelas'];
             $data15['hari'] = $matkul_robot[0]['hari'];
             $data15['jam_mulai'] = $matkul_robot[0]['mulai_praktikum'];
             $data15['jam_selesai'] = $matkul_robot[0]['selesai_praktikum'];
             $data15['asd1'] = $asd1_robot->nama;
             $data15['asd2'] = $asd2_robot->nama;
+            // );
             // if ($matkul_robot[0]['lab'] == 1) {
             //     $data15['lab'] = "Lab. Organisasi Komputer";
             // }
             // if ($matkul_robot[0]['lab'] == 0) {
             //     $data15['lab'] = "Lab. Dasar-Dasar Instrumentasi";
-            // }
+            } else if (empty($robotik)){
+                $responsistem["jadwal_pribadi"];
+            }
 
+            // if($data1 || $data2 || $data3 || $data4 || $data5 || $data6 || $data7 || 
+            // $data8 || $data9 || $data10 || $data11 || $data12 || $keamanan_jaringan || $sistem_interface_mikrokontroler || $robotik )
+            // {
             $hasil1 = (object) array_filter((array) $data1);
             $hasil2 = (object) array_filter((array) $data2);
             $hasil3 = (object) array_filter((array) $data3);
@@ -386,6 +408,7 @@ class JsonJadwalPribadi extends REST_Controller
             $hasil13 = (object) array_filter((array) $data13);
             $hasil14 = (object) array_filter((array) $data14);
             $hasil15 = (object) array_filter((array) $data15);
+            
             array_push($responsistem["jadwal_pribadi"], $hasil1);
             array_push($responsistem["jadwal_pribadi"], $hasil2);
             array_push($responsistem["jadwal_pribadi"], $hasil3);
@@ -401,7 +424,22 @@ class JsonJadwalPribadi extends REST_Controller
             array_push($responsistem["jadwal_pribadi"], $hasil13);
             array_push($responsistem["jadwal_pribadi"], $hasil14);
             array_push($responsistem["jadwal_pribadi"], $hasil15);
-            $this->response($responsistem, 200);
+            // $hsl = array($data1, $data2,$data3,$data4,$data5,$data6,$data7,
+            // $data8,$data9,$data10,$data11,$data12,$data13,$data14,$data15,);
+            // $responsistem = (object)array_filter((array) $hsl);
+            // $responsistem = $hsl;
+            if(!empty($responsistem)){
+            $this->response([
+                'status' => TRUE,
+                'data' => $responsistem
+            ], REST_Controller::HTTP_NOT_FOUND);
+            } 
+            // else {
+            //     $this->response([
+            //         'status' => FALSE,
+            //         'message' => 'Tidak ada jadwal'
+            //     ], REST_Controller::HTTP_NOT_FOUND);
+            // }
         } else {
             $this->response([
                 'status' => false,
@@ -410,3 +448,4 @@ class JsonJadwalPribadi extends REST_Controller
         }
     }
 }
+

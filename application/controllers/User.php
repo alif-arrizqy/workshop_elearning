@@ -751,36 +751,44 @@ class User extends CI_Controller
 	{
 		$id_user = $this->input->post('pilih');
 		$jumlah_dipilih = count($id_user);
-		for ($i = 0; $i < $jumlah_dipilih; $i++) {
-			$hsl = $this->main_model->get_all_temp_absenBY($id_user[$i])->result_array();
-			$id_user = $hsl[0]['id_user'];
+		for ($x = 0; $x < $jumlah_dipilih; $x++) {
+			$hsl = $this->main_model->get_all_temp_absenBY($id_user[$x])->result_array();
 			$kode = $hsl[0]['kode'];
-			$id_kelas_matkul = $this->main_model->get_kelas_matkul($kode);
+			$matkul = $this->main_model->get_kelas_matkul($kode)->result_array();
+			$id_kelas_matkul = $matkul[0]['id_kelas_matkul'];
 			$pertemuan = $hsl[0]['pertemuan'];
 			if ($pertemuan == 1) {
-				$pertemuan = 1;
+				$kirimdata['a_1'] = 1;
 			} else if ($pertemuan == 2) {
-				$pertemuan = 2;
-			}
-			$absen['a_1'] = $pertemuan;
-			$absen['a_2'] = $pertemuan;
-			$kirimdata = array(
-				$absen
-			);
-			// $this->main_model->update_temp($id_user, $kode, $pertemuan);
-			$success = $this->main_model->update_absensi($kirimdata, $id_kelas_matkul, $id_user);
-
-
-			if ($success) {
-				$this->session->set_flashdata('sukses', 'Data berhasil disimpan !!! Terimakasih ..');
-				redirect('approve_absen_kelas/' . $id_kelas_matkul . "/" . $kode);
-			} else {
-				$this->session->set_flashdata('gagal', 'Data gagal disimpan !!! Terimakasih ..');
-				redirect('approve_absen_kelas/' . $id_kelas_matkul . "/" . $kode);
-			}
+				$kirimdata['a_2'] = 1;
+			} else if ($pertemuan == 3) {
+				$kirimdata['a_3'] = 1;
+			} else if ($pertemuan == 4) {
+				$kirimdata['a_4'] = 1;
+			} else if ($pertemuan == 5) {
+				$kirimdata['a_5'] = 1;
+			} else if ($pertemuan == 6) {
+				$kirimdata['a_6'] = 1;
+			} else if ($pertemuan == 7) {
+				$kirimdata['a_7'] = 1;
+			} else if ($pertemuan == 8) {
+				$kirimdata['a_8'] = 1;
+			} else if ($pertemuan == 9) {
+				$kirimdata['a_9'] = 1;
+			} else if ($pertemuan == 10) {
+				$kirimdata['a_10'] = 1;
+			} 
+			// $kirimdata = array(
+			// 	$absen
+			$success = $this->main_model->update_temp($id_user[$x], $kode, $pertemuan);
+			$success = $this->main_model->update_absensi($kirimdata, $id_kelas_matkul, $id_user[$x]);
+		}
+		if ($success) {
+			$this->session->set_flashdata('sukses', 'Data berhasil disimpan !!! Terimakasih ..');
+			redirect('user/approve_absen/' . $id_kelas_matkul . "/" . $kode);
+		} else {
+			$this->session->set_flashdata('gagal', 'Data gagal disimpan !!! Terimakasih ..');
+			redirect('user/approve_absen/' . $id_kelas_matkul . "/" . $kode);
 		}
 	}
-
-
-
 }

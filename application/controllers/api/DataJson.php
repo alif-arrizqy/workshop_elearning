@@ -2805,9 +2805,9 @@ class DataJson extends CI_Controller
                 } else {
                     $tampil['Grade'] =  "E";
                 }
-                $data_pemrograman_python = array(
-                    $tampil
-                );
+                // $data_pemrograman_python = array(
+                //     $tampil
+                // );
             }
             if (!empty($sistem_interface_mikrokontroler)) {
                 $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_interface_mikrokontroler)->result_array();
@@ -2997,7 +2997,7 @@ class DataJson extends CI_Controller
                     $data_sistem_instrumentasi, $data_organisasi_komputer,
                     $data_elektronika, $data_administrasi_jaringan, $data_jaringan_komputer,
                     $data_keamanan_jaringan, $data_mobile_programing, $data_otomasi,
-                    $data_pemrograman_python, $data_sistem_digital_1, $data_sistem_digital_2,
+                    $pemrograman_python, $data_sistem_digital_1, $data_sistem_digital_2,
                     $data_sistem_interface_mikrokontroler, $data_sistem_mikroprosesor,
                     $data_sistem_pemrograman_mikroprosesor, $data_robotik
                 );
@@ -3018,9 +3018,9 @@ class DataJson extends CI_Controller
 
     function post_Temporary()
     {
-        date_default_timezone_get('Asia/Jakarta');
-        $date = date("Y-m-d H:i:s");
         if (isset($_POST['id_user']) && isset($_POST['kode']) && isset($_POST['pertemuan'])) {
+            date_default_timezone_get('Asia/Jakarta');
+            $date = date("Y-m-d H:i:s");
             $id_user = $_POST['id_user'];
             $kode = $_POST['kode'];
             $pertemuan = $_POST['pertemuan'];
@@ -3043,16 +3043,18 @@ class DataJson extends CI_Controller
                 echo json_encode($kirimdata);
                 header("Content-Type: Application/Json");
             } else {
+                date_default_timezone_get('Asia/Jakarta');
                 $kirimdata["id_user"] = $id_user;
                 $kirimdata["kode"] = $kode;
                 $kirimdata["pertemuan"] = $pertemuan;
-                $kirimdata["jam_scan"] = $date;
+                $kirimdata["jam_scan"] = date("Y-m-d H:i:s");
                 $kirimdata["telat"] = $total_waktu;
                 $kirimdata["status"] = '0';
                 $post_temp = $this->main_model->insert_temp($kirimdata);
                 echo json_encode($post_temp);
                 header("Content-Type: Application/Json");
                 if ($post_temp == true) {
+                    date_default_timezone_get('Asia/Jakarta');
                     $get_temp = $this->main_model->cek_temp($id_user, $kode, $pertemuan)->row_array();
                     $hsl["id_user"] = $get_temp["id_user"];
                     $hsl["kode"] = $get_temp["kode"];
@@ -3060,11 +3062,11 @@ class DataJson extends CI_Controller
                     $hsl["jam_scan"] = date("H:i:s", strtotime($get_temp["jam_scan"]));
                     $hsl["telat"] = $get_temp["telat"];
                     $hsl["status"] = $get_temp["status"];
-                    // if ($get_temp["status"] == '0'){
-                    // $hsl["status"] = "pending";
-                    // } else {
-                    // $hsl["status"] = "hadir";
-                    // }
+                    if ($get_temp["status"] == '0'){
+                    $hsl["status"] = "pending";
+                    } else {
+                    $hsl["status"] = "hadir";
+                    }
                     echo json_encode($hsl);
                     header("Content-Type: Application/Json");
                 } else {
