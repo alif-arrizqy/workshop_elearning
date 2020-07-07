@@ -20,8 +20,8 @@ class LoginDashboard extends CI_Controller
 	function loginelearning()
 	{
 		if ($this->session->userdata('masuk') != TRUE) {
-			// $this->load->view('admin/login_dashboard_elearning');
-			$this->load->view('under_contruction');
+			$this->load->view('admin/login_dashboard_elearning');
+			// $this->load->view('under_contruction');
 		} else {
 			redirect('workshopadministrator');
 		}
@@ -30,8 +30,8 @@ class LoginDashboard extends CI_Controller
 	function loginelearningUser()
 	{
 		if ($this->session->userdata('masuk') != TRUE) {
-			// $this->load->view('user/login_dashboard_elearning');
-			$this->load->view('under_contruction');
+			$this->load->view('user/login_dashboard_elearning');
+			// $this->load->view('under_contruction');
 		} else {
 			redirect('dashboard_user');
 		}
@@ -244,7 +244,7 @@ class LoginDashboard extends CI_Controller
 		$username = $this->session->userdata('ses_username');
 		$this->login_model->hapus_session($username);
 		$this->session->sess_destroy();
-		redirect('loginelearning');
+		redirect('administrator_elearning');
 	}
 
 	function logout_user_elearning()

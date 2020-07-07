@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //Login Admin
 $route['login'] = 'LoginDashboard';
-$route['loginelearning'] = 'LoginDashboard/loginelearning';
+$route['administrator_elearning'] = 'LoginDashboard/loginelearning';
 // $route['logininventaris'] = 'LoginDashboard/logininventaris';
 $route['lupapass_admin'] = 'LoginDashboard/lupapass';
 $route['auth_admin_elearning'] = 'LoginDashboard/auth_admin_elearning';
