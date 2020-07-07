@@ -44,10 +44,10 @@ class JsonJadwalDDI extends REST_Controller
                 'message' => 'Tidak Ada Jadwal Praktikum'
             ], REST_Controller::HTTP_NOT_FOUND);
         } else {
-            $hasil = (object) array_filter((array) $jadwalddi);
+            // $hasil = (object) array_filter((array) $jadwalddi);
             $this->response([
                 'status' => TRUE,
-                'data' => $hasil
+                'data' => $jadwalddi
             ], REST_Controller::HTTP_NOT_FOUND);
         }
     }
