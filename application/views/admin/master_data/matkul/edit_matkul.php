@@ -37,7 +37,7 @@
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="modulfile">File Modul</label>
           <div class="col-md-9 col-sm-6 col-xs-12">
             <input id="myfoto" name="modulfile" placeholder="input Modul" class="form-control col-md-7 col-xs-12" type="file">
-            <input type="checkbox" id="lihat" name="lihat" value="1" onclick="tampil(this.checked);"> <span id="text"> Sembunyi</span>
+            <input type="checkbox" id="lihat" name="lihat" value="1" onclick="tampil(this.checked);"> <span id="text"> Ceklis Jika Tidak Ingin Menghapus Modul</span>
             <br>
             <?php if(empty($file)){echo"file modul tidak ada";}else{ ?>
               <?php if($extensi == 'pdf'){ ?>

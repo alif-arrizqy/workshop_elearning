@@ -85,6 +85,7 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
-define("FOOTERDASHBOARD", "WorkshopElearning | CendekiaGroup | CandiStudio | UNIVERSITAS PAKUAN");
-define("FOOTER", "WorkshopElearning | Develop Web Triyoga Ginanjar Pamungkas,S.Kom | Develop MobileAPP Joe Fachrizal,S.Kom | RumahCendekia | CandiStudio | Universitas Pakuan");
+define("FOOTERDASHBOARD", "Develop by Workshop Black Team | Rumah Cendekia | Candi Studio | Universitas Pakuan");
+// define("FOOTER", "WorkshopElearning | Develop Web Triyoga Ginanjar Pamungkas,S.Kom | Develop MobileAPP Joe Fachrizal,S.Kom | RumahCendekia | CandiStudio | Universitas Pakuan");
+define("FOOTER", "Develop by Workshop Black Team | Rumah Cendekia | Candi Studio | Universitas Pakuan");
 define("SARAN", "Disaran kan menggunakan browser Google Chrome, Mozila Firefox atau Internet Explorer untuk perfoma yang stabil");

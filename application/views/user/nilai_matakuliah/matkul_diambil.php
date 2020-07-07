@@ -46,7 +46,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold;"><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -76,7 +76,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -106,7 +106,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -136,7 +136,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -166,7 +166,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -196,7 +196,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -226,7 +226,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -256,7 +256,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -286,7 +286,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -316,7 +316,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -346,7 +346,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -376,7 +376,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -406,7 +406,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -436,7 +436,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();
@@ -466,7 +466,7 @@
                   <div class="tile-stats">
                     <div class="icon"><i class="fa fa-folder"></i>
                     </div>
-                    <h4 style="color: black;margin-left: 10px;font-weight: bold;margin-top: 75px;"><?= $matkul[0]['kelas']?></h4>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas']?></h4>
                     <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari']." - ".$matkul[0]['mulai_praktikum']." s/d ".$matkul[0]['selesai_praktikum'];?></h4>
                       <?php 
                         $asdos1 = $this->main_model->get_asdos1_iduser($matkul[0]['asdos_1'])->result();

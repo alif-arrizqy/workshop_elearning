@@ -108,7 +108,6 @@ $route['approve_absen_kelas/(:num)/(:any)'] = 'User/approve_absen_kelas/$1/$2';
 $route['all_approve_absen_pilihan'] = 'User/all_approve_absen_pilihan';
 $route['delete_approve'] = 'LoginDashboard/delete_approve';
 
-
 	//tabel administrator
 	$route['v_administrator'] = 'Main/v_administrator';
 	$route['add_administrator'] = 'Main/add_administrator';
@@ -196,19 +195,14 @@ $route['delete_approve'] = 'LoginDashboard/delete_approve';
 	$route['cetak_nilai/(:num)/(:any)'] = 'Main/cetak_nilai/$1/$2';
 
 //API JSON
-// $route['LoginApi'] = 'api/DataJson/get_login';
 $route['LoginApi'] = 'api/JsonLogin';
 $route['UserApi'] = 'api/DataJson/get_user';
-// $route['JadwalPribadiApi'] = 'api/DataJson/get_JadwalPribadi';
 $route['JadwalPribadiApi'] = 'api/JsonJadwalPribadi';
-// $route['JadwalNgajarApi'] = 'api/DataJson/get_JadwalNgajar';
 $route['JadwalNgajarApi'] = 'api/JsonJadwalNgajar';
-$route['JadwalOrkomApi'] = 'api/DataJson/get_JadwalOrkom';
-$route['JadwalDDIApi'] = 'api/DataJson/get_JadwalDDI';
-// $route['AbsenApi'] = 'api/DataJson/get_Absen';
+$route['JadwalOrkomApi'] = 'api/JsonJadwalOrkom';
+$route['JadwalDDIApi'] = 'api/JsonJadwalDDI';
 $route['AbsenApi'] = 'api/JsonAbsen';
-$route['NilaiApi'] = 'api/DataJson/get_Nilai';
-// $route['NilaiApi'] = 'api/JsonNilai';
+$route['NilaiApi'] = 'api/JsonNilai';
 $route['PostTempApi'] = 'api/DataJson/post_Temporary';
 
 $route['default_controller'] = 'LoginDashboard/loginelearningUser';

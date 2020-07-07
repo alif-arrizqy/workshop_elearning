@@ -229,9 +229,14 @@
                           ?>
                     </td>
                   </tr>
+                  <tr>
+                    <td>
+                      <a href="#" class="btn btn-success btn-xs"><span class="fa fa-share-alt"></span> Bagikan QRCode </a>
+                    </td>
+                  </tr>
                 </table>
               </div>
-              <br><br><br><br><br><br><br><br><br><br>
+              <!-- <br><br><br><br><br><br><br><br><br><br> -->
               <hr style="border-width: 2px;border-style: dashed;">
             <?php endforeach; ?>
           <?php } ?>
@@ -239,6 +244,7 @@
         </div>
       </div>
     </div>
+</div>
     <div class="modal fade" id="modal_user" tabindex="-1" role="dialog" aria-labelledby="largeModal2" aria-hidden="true"></div>
     <div class="modal fade" id="modal_ambil_matkul_user" tabindex="-1" role="dialog" aria-labelledby="largeModal2" aria-hidden="true"></div>
     <div class="modal fade" id="modal_detail_qrcode" tabindex="-1" role="dialog" aria-labelledby="largeModal3" aria-hidden="true"></div>

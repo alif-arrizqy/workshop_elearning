@@ -1319,7 +1319,7 @@ class Main extends CI_Controller
 				$fileasli = str_replace(" ", "_", $_FILES['modulfile']['name']);
 				$config['upload_path'] 		= './assets/images/file_modul/'; //path folder
 				$config['allowed_types'] 	= 'pdf|doc|docx'; //type yang dapat diakses bisa anda sesuaikan
-				$config['max_size']      	= 1024;
+				$config['max_size']      	= 10240; //max 10mb
 				$config['file_name']      = $fileasli;
 				$this->load->library('upload', $config);
 				$this->upload->initialize($config);
@@ -1384,7 +1384,7 @@ class Main extends CI_Controller
 				$fileasli = str_replace(" ", "_", $_FILES['modulfile']['name']);
 				$config['upload_path'] 		= './assets/images/file_modul/'; //path folder
 				$config['allowed_types'] 	= 'pdf|doc|docx'; //type yang dapat diakses bisa anda sesuaikan
-				$config['max_size']      	= 1024;
+				$config['max_size']      	= 10240; //max 10mb
 				$config['file_name']      = $fileasli;
 				$this->load->library('upload', $config);
 				$this->upload->initialize($config);
