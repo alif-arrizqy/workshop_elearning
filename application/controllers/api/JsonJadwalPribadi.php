@@ -424,22 +424,12 @@ class JsonJadwalPribadi extends REST_Controller
             array_push($responsistem["jadwal_pribadi"], $hasil13);
             array_push($responsistem["jadwal_pribadi"], $hasil14);
             array_push($responsistem["jadwal_pribadi"], $hasil15);
-            // $hsl = array($data1, $data2,$data3,$data4,$data5,$data6,$data7,
-            // $data8,$data9,$data10,$data11,$data12,$data13,$data14,$data15,);
-            // $responsistem = (object)array_filter((array) $hsl);
-            // $responsistem = $hsl;
             if(!empty($responsistem)){
             $this->response([
                 'status' => TRUE,
                 'data' => $responsistem
             ], REST_Controller::HTTP_NOT_FOUND);
-            } 
-            // else {
-            //     $this->response([
-            //         'status' => FALSE,
-            //         'message' => 'Tidak ada jadwal'
-            //     ], REST_Controller::HTTP_NOT_FOUND);
-            // }
+            }
         } else {
             $this->response([
                 'status' => false,
