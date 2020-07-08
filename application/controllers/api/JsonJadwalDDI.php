@@ -36,7 +36,6 @@ class JsonJadwalDDI extends REST_Controller
         } elseif ($day == "Saturday") {
             $hari = "Sabtu";
         }
-        // $hari = $this->get('hari');
         $jadwalddi = $this->main_model->lab_ddi($hari)->result();
         if (empty($jadwalddi)) {
             $this->response([
@@ -44,11 +43,10 @@ class JsonJadwalDDI extends REST_Controller
                 'message' => 'Tidak Ada Jadwal Praktikum'
             ], REST_Controller::HTTP_NOT_FOUND);
         } else {
-            // $hasil = (object) array_filter((array) $jadwalddi);
             $this->response([
                 'status' => TRUE,
                 'data' => $jadwalddi
-            ], REST_Controller::HTTP_NOT_FOUND);
+            ], REST_Controller::HTTP_OK);
         }
     }
 }

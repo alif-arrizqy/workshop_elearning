@@ -36,7 +36,6 @@ class JsonJadwalOrkom extends REST_Controller
         } elseif ($day == "Saturday") {
             $hari = "Sabtu";
         }
-        // $hari = $this->get('hari');
         $jadwalorkom = $this->main_model->lab_orkom($hari)->result();
         if (empty($jadwalorkom)) {
             $this->response([
@@ -44,11 +43,10 @@ class JsonJadwalOrkom extends REST_Controller
                 'message' => 'Tidak Ada Jadwal Praktikum'
             ], REST_Controller::HTTP_NOT_FOUND);
         } else {
-            // $hasil = (object) array_filter((array) $jadwalorkom);
             $this->response([
                 'status' => TRUE,
                 'data' => $jadwalorkom
-            ], REST_Controller::HTTP_NOT_FOUND);
+            ], REST_Controller::HTTP_OK);
         }
     }
 }
