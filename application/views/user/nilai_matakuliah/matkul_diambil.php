@@ -8,6 +8,7 @@
     <div class="flash-data-failed" data-gagal="<?= $this->session->flashdata('gagal'); ?>"></div>
   <?php } ?>
   <div class="row">
+    <!-- QRCode Absen Pertemuan -->
     <div class="col-md-12">
       <div class="x_content">
         <div class="row">
@@ -289,6 +290,7 @@
       </div>
     </div>
 
+  <!-- Lihat Nilai dan Absen -->
     <div class="col-md-12">
       <div class="">
         <div class="x_content">

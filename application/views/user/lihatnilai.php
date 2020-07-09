@@ -152,6 +152,7 @@
                   ?>
                 </div>
               </div>
+            <a href="<?= base_url('cetak_nilai_mhs/').$data_nilai[0]['id_kelas_matkul']."/".$data_absensi[0]['id_user'] ?>" target="_blank" class="btn btn-success btn-md pull-right" ><i class="fa fa-print"></i> Cetak Nilai Saya</a>
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
               <div class="x_content">

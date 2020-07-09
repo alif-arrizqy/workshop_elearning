@@ -719,12 +719,24 @@ class User extends CI_Controller
 		$this->load->view('user/proses_data/nilai/edit_nilai', $data);
 	}
 
+	// cetak nilai untuk satu kelas
 	function cetak_nilai($id_kelas_matkul, $kode)
 	{
 		$data = array(
 			'data_cetak_nilai' => $this->main_model->get_all_cetak_nilai_mhs($id_kelas_matkul, $kode),
 		);
 		$this->load->view('user/proses_data/nilai/cetak_nilai', $data);
+	}
+
+	// cetak nilai untuk satu orang
+	function cetak_nilai_mhs($id_kelas_matkul, $id_user)
+	{
+		$data = array(
+			'data_absensi' => $this->main_model->get_all_absen_mhsBY($id_kelas_matkul, $id_user)->result_array(),
+			'data_nilai' => $this->main_model->get_all_nilai_mhsBY($id_kelas_matkul, $id_user)->result_array(),
+
+		);
+		$this->load->view('user/nilai_matakuliah/cetak_nilai_mhs', $data);
 	}
 
 	function v_approve_absen()

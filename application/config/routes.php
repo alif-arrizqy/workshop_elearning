@@ -104,6 +104,7 @@ $route['v_nilai_user'] = 'User/v_nilai_user';
 $route['v_nilai'] = 'User/v_nilai';
 $route['edit_nilai'] = 'User/edit_nilai';
 $route['cetak_nilai'] = 'User/cetak_nilai';
+$route['cetak_nilai_mhs/(:num)/(:num)'] = 'User/cetak_nilai_mhs/$1/$2';
 // Approve Absen
 $route['v_approve_absen'] = 'User/v_approve_absen';
 $route['approve_absen_kelas/(:num)/(:any)'] = 'User/approve_absen_kelas/$1/$2';

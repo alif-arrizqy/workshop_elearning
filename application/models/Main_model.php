@@ -696,6 +696,11 @@ class Main_model extends CI_Model{
         return $query;
       }
 
+      function get_semester_dan_kelas($matkul_id){
+    $query = $this->db->query("SELECT * FROM tbl_matkul where id_matkul = '$matkul_id'");
+        return $query;
+      }
+
       //User
       function ubah_user($id_user){
         $query=$this->db->query("SELECT a.*, b.* FROM tbl_user AS a INNER JOIN tbl_biodata_user AS b ON a.id_user=b.id_user WHERE a.id_user='$id_user'");
