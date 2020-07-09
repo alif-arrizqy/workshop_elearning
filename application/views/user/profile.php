@@ -231,7 +231,13 @@
                   </tr>
                   <tr>
                     <td>
-                      <a href="#" class="btn btn-success btn-xs"><span class="fa fa-share-alt"></span> Bagikan QRCode </a>
+                      <form action="<?= base_url('save_share_qrcode'); ?>" method="post" name="form" enctype="multipart/form-data">
+                      <?php $kode = $gbr['kode'];
+                      $pertemuan = $gbr['pertemuan']; ?>
+                      <input type="hidden" id="kode" name="kode" value="<?= $kode ?>" >
+                      <input type="hidden" id="pertemuan" name="pertemuan" value="<?= $pertemuan ?>" >
+                      <button type="submit" class="btn btn-success btn-xs" onclick="this.form.submit()"><span class="fa fa-share-alt"></span> Bagikan QRcode</button>
+                      </form>
                     </td>
                   </tr>
                 </table>

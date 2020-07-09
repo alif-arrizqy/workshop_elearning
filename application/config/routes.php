@@ -91,6 +91,8 @@ $route['update_penilaian_user'] = 'User/update_penilaian';
 $route['ambil_matkul_user/(:num)'] = 'User/ambil_matkul_mahasiswa_user/$1';
 $route['save_ambil_matkul_user'] = 'User/save_ambil_matkul_user';
 $route['v_asdos_user'] = 'User/v_asdos_user';
+$route['save_share_qrcode'] = 'User/save_share_qrcode';
+
 //Absen user
 $route['matkul_diambil'] = 'User/matkul_diambil';
 $route['v_absen_user'] = 'User/v_absen_user';

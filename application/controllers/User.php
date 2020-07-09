@@ -9,6 +9,7 @@ class User extends CI_Controller
 		parent::__construct();
 		$this->load->model('main_model');
 		$this->load->library('upload');
+		$this->load->library('ciqrcode');
 		if ($this->session->userdata('masuk') != TRUE) {
 			$url = base_url();
 			$this->session->set_flashdata('msg', 'Anda tidak boleh masuk Dashboard, silahkan login terlebih dahulu !!');
@@ -777,7 +778,7 @@ class User extends CI_Controller
 				$kirimdata['a_9'] = 1;
 			} else if ($pertemuan == 10) {
 				$kirimdata['a_10'] = 1;
-			} 
+			}
 			// $kirimdata = array(
 			// 	$absen
 			$success = $this->main_model->update_temp($id_user[$x], $kode, $pertemuan);
@@ -789,6 +790,58 @@ class User extends CI_Controller
 		} else {
 			$this->session->set_flashdata('gagal', 'Data gagal disimpan !!! Terimakasih ..');
 			redirect('user/approve_absen/' . $id_kelas_matkul . "/" . $kode);
+		}
+	}
+
+	// share qrcode
+	function save_share_qrcode()
+	{
+		$this->load->library('ciqrcode');
+		$kode = $this->input->post('kode');
+		$qrcode = $this->main_model->get_all_share_qrcodeBY($kode)->num_rows();
+		if ($qrcode > 0) {
+			$this->session->set_flashdata('gagal', 'Qrcode sudah di buat !!! Terimakasih ..');
+			redirect('dashboard_user');
+		} else {
+			$kode = $this->input->post('kode');
+			$inputPertemuan = $this->input->post('pertemuan');
+			$nama_qrcode = $kode . "-" . $inputPertemuan;
+			$qrcode_gbr = $nama_qrcode . ".png";
+			$data = array(
+				"kode" => $kode,
+				"pertemuan" => $inputPertemuan,
+			);
+			$result = json_encode($data);
+			$config['cacheable']    = true;
+			$config['cachedir']     = 'assets/';
+			$config['errorlog']     = 'assets/';
+			$config['imagedir']     = 'assets/images/imgqrcode/share_absen/';
+			$config['quality']      = true;
+			$config['size']         = '1024';
+			$config['black']        = array(224, 255, 255);
+			$config['white']        = array(70, 130, 180);
+			$this->ciqrcode->initialize($config);
+
+			$params['data'] = $result;
+			$params['level'] = 'H';
+			$params['size'] = 10;
+			$params['savename'] = FCPATH . $config['imagedir'] . $qrcode_gbr;
+			$this->ciqrcode->generate($params);
+
+			$kirimdata['kode'] = $kode;
+			$kirimdata['pertemuan'] = $inputPertemuan;
+			$kirimdata['nama_qrcode'] = $nama_qrcode;
+			$kirimdata['qrcode'] = $qrcode_gbr;
+			$kirimdata['status'] = "1";
+			$success = $this->main_model->insert_share_qrcode($kirimdata);
+		}
+
+		if ($success) {
+			$this->session->set_flashdata('sukses', 'Data berhasil disimpan !!! Terimakasih ..');
+			redirect('dashboard_user');
+		} else {
+			$this->session->set_flashdata('gagal', 'Data gagal disimpan !!! Terimakasih ..');
+			redirect('dashboard_user');
 		}
 	}
 }

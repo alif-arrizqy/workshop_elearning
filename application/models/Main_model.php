@@ -523,7 +523,7 @@ class Main_model extends CI_Model{
         $this->db->delete('tbl_qrcode');
       }
 
-      //Qrcode
+      //session
       function get_all_session_akun(){
         $query=$this->db->query("SELECT * FROM tbl_session ORDER BY Waktu DESC");
         return $query;
@@ -831,6 +831,26 @@ class Main_model extends CI_Model{
       function delete_approve()
       {
           $this->db->empty_table('tbl_temporary');
+      }
+
+      // share qrcode
+      function get_qrcode_matkulBYKODE($kode){
+        $query=$this->db->query("SELECT a.*,b.* FROM tbl_kelas_matkul AS a INNER JOIN tbl_share_qrcode AS b ON a.kode=b.kode WHERE b.kode='$kode'");
+        return $query;
+      }
+
+      function get_all_share_qrcodeBY($kode){
+        $query=$this->db->query("SELECT * FROM tbl_share_qrcode WHERE kode='$kode'");
+        return $query;
+      }
+
+      function insert_share_qrcode($kirimdata){
+        $query = $this->db->insert('tbl_share_qrcode', $kirimdata);
+        if($query){
+            return true;
+        }else{
+            return false;
+        }
       }
 
 }

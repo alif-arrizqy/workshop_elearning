@@ -18,6 +18,271 @@
             </div>
             <div class="x_content">
               <b style="font-size: 20px">Silahkan Kamu Scan QRCode Sesuai Dengan Jadwal Kelas dan Pertemuan Praktikum Saat Ini</b>
+              <?php
+              foreach ($data_kelas_mhs as $hasil_kelas) :
+                $sistem_instrumentasi = $hasil_kelas->sistem_instrumentasi;
+                $organisasi_komputer = $hasil_kelas->organisasi_komputer;
+                $elektronika = $hasil_kelas->elektronika;
+                $sistem_digital_1 = $hasil_kelas->sistem_digital_1;
+                $jaringan_komputer = $hasil_kelas->jaringan_komputer;
+                $sistem_digital_2 = $hasil_kelas->sistem_digital_2;
+                $sistem_mikroprosesor = $hasil_kelas->sistem_mikroprosesor;
+                $otomasi = $hasil_kelas->otomasi;
+                $administrasi_jaringan = $hasil_kelas->administrasi_jaringan;
+                $sistem_pemrograman_mikroprosesor = $hasil_kelas->sistem_pemrograman_mikroprosesor;
+                $mobile_programing = $hasil_kelas->mobile_programing;
+                $keamanan_jaringan = $hasil_kelas->keamanan_jaringan;
+                $pemrograman_python = $hasil_kelas->pemrograman_python;
+                $sistem_interface_mikrokontroler = $hasil_kelas->sistem_interface_mikrokontroler;
+                $robotik = $hasil_kelas->robotik;
+              endforeach;
+              ?>
+              <?php
+              if (empty($sistem_instrumentasi) && empty($organisasi_komputer) && empty($elektronika) && empty($sistem_digital_1) && empty($jaringan_komputer) && empty($sistem_digital_2) && empty($sistem_mikroprosesor) && empty($otomasi) && empty($administrasi_jaringan) && empty($sistem_pemrograman_mikroprosesor) && empty($mobile_programing) && empty($keamanan_jaringan) && empty($pemrograman_python) && empty($sistem_interface_mikrokontroler) && empty($robotik)) {
+                echo "<h1 align='center'>Tidak Ada Kelas Yang Di Ambil</h1>";
+              }
+              ?>
+              <?php if (!empty($sistem_instrumentasi)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_instrumentasi)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($sistem_instrumentasi)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                    <center>
+                      <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else { echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>"; } ?>
+                    </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($organisasi_komputer)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($organisasi_komputer)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($organisasi_komputer)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                    <center>
+                      <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else { echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>"; } ?>
+                    </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($elektronika)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($elektronika)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($elektronika)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                    <center>
+                      <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else { echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>"; } ?>
+                    </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($sistem_digital_1)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_digital_1)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($sistem_digital_1)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                    <center>
+                      <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else { echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>"; } ?>
+                    </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($jaringan_komputer)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($jaringan_komputer)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($jaringan_komputer)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                    <center>
+                      <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else { echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>"; } ?>
+                    </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($sistem_digital_2)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_digital_2)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($sistem_digital_2)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                    <center>
+                      <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else { echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>"; } ?>
+                    </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($sistem_mikroprosesor)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_mikroprosesor)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($sistem_mikroprosesor)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                    <center>
+                      <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else { echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>"; } ?>
+                    </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($otomasi)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($otomasi)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($otomasi)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                    <center>
+                      <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else { echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>"; } ?>
+                    </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($administrasi_jaringan)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($administrasi_jaringan)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($administrasi_jaringan)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                    <center>
+                      <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else { echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>"; } ?>
+                    </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($sistem_pemrograman_mikroprosesor)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_pemrograman_mikroprosesor)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($sistem_pemrograman_mikroprosesor)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                  <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+                      <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                      <center>
+                        <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else {
+                      echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>";
+                    } ?>
+                      </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($mobile_programing)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($mobile_programing)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($mobile_programing)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                  <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+                      <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                      <center>
+                        <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else {
+                      echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>";
+                    } ?>
+                      </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($keamanan_jaringan)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($keamanan_jaringan)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($keamanan_jaringan)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                  <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+
+                      <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                      <center>
+                        <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else {
+                      echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>";
+                    } ?>
+                      </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($pemrograman_python)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($pemrograman_python)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($pemrograman_python)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                  <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+
+                      <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                      <center>
+                        <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else {
+                      echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>";
+                    } ?>
+                      </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($sistem_interface_mikrokontroler)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($sistem_interface_mikrokontroler)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($sistem_interface_mikrokontroler)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                  <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+
+                      <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                      <center>
+                        <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else {
+                      echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>";
+                    } ?>
+                      </center>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if (!empty($robotik)) {
+                $matkul = $this->main_model->get_kelas_matkulBYKODE($robotik)->result_array();
+                $qrcode = $this->main_model->get_qrcode_matkulBYKODE($robotik)->result_array(); ?>
+                <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                  <div class="tile-stats">
+                    <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
+                    <?php if (!empty($qrcode[0]['qrcode']) && $qrcode[0]['pertemuan']) { ?>
+
+                      <h4 style="color: black;margin-left: 10px;font-weight: bold; "><b> QRCode Absen Pertemuan <?= $qrcode[0]['pertemuan']; ?></b></h4>
+                      <center>
+                        <img src="<?= base_url('assets/images/imgqrcode/absen/') . $qrcode[0]['qrcode']; ?>" width="70%" height="70%">
+                      <?php } else {
+                      echo "<h2 align='center'>Tidak Ada QRCode Absen</h2>";
+                    } ?>
+                      </center>
+                  </div>
+                </div>
+              <?php } ?>
             </div>
           </div>
         </div>
@@ -78,11 +343,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -116,11 +382,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -154,11 +421,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -192,11 +460,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -230,11 +499,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -268,11 +538,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -306,11 +577,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -344,11 +616,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -382,11 +655,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -420,11 +694,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -444,8 +719,7 @@
                   <a href="<?= base_url('lihat_nilai_matkul/' . $matkul[0]['id_kelas_matkul'] . "/" . $this->session->userdata('ses_idlogin')) ?>">
                     <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
                       <div class="tile-stats">
-                        <div class="icon"><i class="fa fa-folder"></i>
-                        </div>
+                        <div class="icon"><i class="fa fa-folder"></i></div>
                         <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
                         <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari'] . " - " . $matkul[0]['mulai_praktikum'] . " s/d " . $matkul[0]['selesai_praktikum']; ?></h4>
                         <?php
@@ -458,11 +732,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -496,11 +771,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -520,8 +796,7 @@
                   <a href="<?= base_url('lihat_nilai_matkul/' . $matkul[0]['id_kelas_matkul'] . "/" . $this->session->userdata('ses_idlogin')) ?>">
                     <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
                       <div class="tile-stats">
-                        <div class="icon"><i class="fa fa-folder"></i>
-                        </div>
+                        <div class="icon"><i class="fa fa-folder"></i></div>
                         <h4 style="color: black;margin-left: 10px;font-weight: bold; "><?= $matkul[0]['kelas'] ?></h4>
                         <h4 style="color: black;margin-left: 10px;"><?= $matkul[0]['hari'] . " - " . $matkul[0]['mulai_praktikum'] . " s/d " . $matkul[0]['selesai_praktikum']; ?></h4>
                         <?php
@@ -534,11 +809,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -572,11 +848,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
@@ -610,11 +887,12 @@
                           }
                         }
                         ?>
-                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?><?php if ($matkul[0]['asdos_2'] != 0) {
-                                                                                                    echo $asd2->nama;
-                                                                                                  } else {
-                                                                                                    echo "-";
-                                                                                                  } ?></h4>
+                        <h4 style="color: black;margin-left: 10px;"><?= $asd1->nama . " dan "; ?>
+                          <?php if ($matkul[0]['asdos_2'] != 0) {
+                            echo $asd2->nama;
+                          } else {
+                            echo "-";
+                          } ?></h4>
                         <h5 style="color: black;margin-left: 10px;">
                           <a href="<?= base_url('assets/images/file_modul/') . $matkul[0]['file']; ?>">
                             <?php if ($extensi == 'pdf') { ?>
