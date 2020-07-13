@@ -46,8 +46,8 @@ code {
 
 #container {
 	margin: 10px;
-	border: 1px solid #D0D0D0;
-	box-shadow: 0 0 8px #D0D0D0;
+	border: 0px solid #D0D0D0;
+	box-shadow: 0 0 0px #D0D0D0;
 }
 
 p {
@@ -57,8 +57,9 @@ p {
 </head>
 <body>
 	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
+		<!-- <h1><?php echo $heading; ?></h1> -->
+		<!-- <?php echo $message; ?> -->
+		<center><img src="assets/images/error-404-2.jpg" width="50%" height="10%"></center>
 	</div>
 </body>
 </html>
